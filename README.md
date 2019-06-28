@@ -37,7 +37,7 @@ SMTP mail support. ACP notification center. Complete changes log. And more!
 
 ## More Information
 
-Learn more about qEngine Directory: https://www.c97.net/qengine-lightweight-fast-powerful-cms.php
+Learn more about qEngine CMS: https://www.c97.net/qengine-lightweight-fast-powerful-cms.php
 
 Or try the live demo here: https://www.c97.net/qengine-demo.php
 
