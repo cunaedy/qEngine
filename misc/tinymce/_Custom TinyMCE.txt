@@ -1,0 +1,4 @@
+- No BBCode
+- No mobile theme
+- No inlite theme
+- No imagetools

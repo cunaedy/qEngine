@@ -1,0 +1,46 @@
+/* OUTLINE */
+/* COLOR: #fff, #eee, #ddd, #ccc, #aaa, #999, #000, #282828*/
+/* BOOTSTRAP: #5cb85c, #337ab7, #5bc0de, #f0ad4e, #d9534f */
+h1,h2,h3,h4,h5{font-family:Oswald, Arial, Helvetica;color:#282828;}
+h1{font-size:36px;}
+h2{font-size:26px;color:#282828;}
+h3{font-size:20px;}
+body{background:#fff;margin:0}
+th {text-align:left}
+
+/* INLINE EDITOR */
+.editable{position:relative;}
+.inline_edit:hover{}
+.inline_edit:hover:before{content:"CLICK TO EDIT";font:8pt Arial,Helvetica,Sans;position:absolute;width:100%;height:100%;left:0;top:0;background:rgba(255,255,255,0.5);outline:dotted 1px #f00;display:flex;align-items: center;justify-content: center;}
+.inline_edit:focus:before{display:none;}
+
+/* CONTENTS */
+#body_left{padding-right:20px; padding-bottom:90px;padding-top:20px;}
+#body_right{color:#666;line-height:150%;padding-bottom:90px;}
+#body_right ul li{color:#666;line-height:150%;}
+#body_right a{text-decoration:none;}
+#body_right a:hover{text-decoration:underline;}
+#body_right h3{margin:25px 0 10px 0;font-size:20px}
+#footer{background:#111;color:#eee;padding:20px 0}
+#footer h4{font:17px Oswald;color:#eee;}
+#footer_content li a,#footer_content li{color:#999}
+.pg_main_image{border:solid 5px #fff;outline:solid 1px #888;box-shadow: 0 0 5px #888888;background:#fff;margin:15px 20px 10px -20px;transform:rotate(-3deg);float:left}
+
+/* WELCOME */
+#welcome{padding-bottom:90px}
+
+/* Bootstrap XS */
+@media screen and (max-width: 767px) {
+body{margin:0}
+.pg_main_image{float:none;margin-left:10px}
+}
+
+/* Bootstrap SM */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+}
+
+/* Bootstrap MD */
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+}
+
+/* Bootstrap LG is the default css */

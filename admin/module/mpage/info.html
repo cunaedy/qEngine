@@ -1,0 +1,67 @@
+<h1>Documentation of Multi Page</h1>
+
+<a name="intro"></a>
+<h2>Introduction</h2>
+<p>This module allow you to combine multiple pages (by using page gallery) and other modules (eg Slide Show) into one single page.</p>
+<p>While you may be able to achieve the same effect by using default Page Editor, but Multi Page have more features:</p>
+<ul>
+	<li>Cached whole page to improve page performance, instead of per element.</li>
+	<li>Page can be displayed without side bar.</li>
+</ul>
+
+<p>To install this this module in, follow these easy steps:</p>
+<ol>
+	<li>Go to Admin CP &gt; Configure Site &gt; Modules.</li>
+	<li>Click on Scan New Modules.</li>
+	<li>On 'Available Modules', click 'Documentation' to read this manual.</li>
+	<li>Click on 'Install' to begin install process.</li>
+</ol>
+
+<h2>Usage</h2>
+<p>To add a new multi page, from ACP, click Modules &gt; Multi Page &gt; Manage Multipage.</p>
+<p>Edit the content, eg:</p>
+<pre class="code">
+&lt;div class="container"&gt;
+	&lt;div class="row"&gt;
+		&lt;div class="col-sm-6"&gt;
+			&lt;!-- BEGINMODULE page_gallery --&gt;
+			page_id = 2
+			body = 1
+			&lt;!-- ENDMODULE --&gt;
+		&lt;/div&gt;
+		&lt;div class="col-sm-6"&gt;
+			&lt;!-- BEGINMODULE page_gallery --&gt;
+			page_id = 3
+			body = 1
+			&lt;!-- ENDMODULE --&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class="row"&gt;
+		&lt;div class="col-sm-6"&gt;
+			&lt;!-- BEGINMODULE page_gallery --&gt;
+			page_id = 4
+			body = 1
+			&lt;!-- ENDMODULE --&gt;
+		&lt;/div&gt;
+		&lt;div class="col-sm-6"&gt;
+			&lt;!-- BEGINMODULE slideshow --&gt;
+			theme=theme-welcome
+			cat_id=82
+			&lt;!-- ENDMODULE --&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+<h2>Uninstalling</h2>
+<p>To uninstall this module, follow these easy steps:</p>
+<ol>
+	<li>Go to Admin CP &gt; Configure Site &gt; Modules.</li>
+	<li>Find this module. Click Uninstall.</li>
+</ol>
+
+<h2>About This Module</h2>
+<p><b>Multi Page Module</b><br />
+This module is created by C97.net. You can contact us at: <a href="mailto:contact@c97.net">contact@c97.net</a>,
+or visit the website in: <a href="http://www.c97.net">http://www.c97.net</a><br />
+&copy; C97.net</p>

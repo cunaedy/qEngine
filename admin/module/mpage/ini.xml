@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<qmodule type="module" version="2.0.0">
+	<name>Multi Page</name>
+	<id>mpage</id>
+	<author>C97.net</author>
+	<copyright>C97.net. All rights reserved.</copyright>
+	<license>Freeware</license>
+	<authorEmail>contact@c97.net</authorEmail>
+	<authorUrl>www.c97.net</authorUrl>
+	<version>1.0.0</version>
+	<description>Allow you to combine multiple pages and other modules into a single page.</description>
+
+	<adminMenu>
+		<adminTitle>Manage Multipage</adminTitle>
+		<adminUrl>task.php?mod=mpage&amp;amp;run=edit.php</adminUrl>
+	</adminMenu>
+</qmodule>

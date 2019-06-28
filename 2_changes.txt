@@ -1,0 +1,231 @@
+Version 16.3.1 / 20190628:
+[QE] Reformat the code according to PSR-2 guide
+
+Version 16.3.0 / 20180402:
+[QE] As always, bug fixes
+[QE] Simplify file structures
+[QE] Update javascript library to latest version (except BootStrap)
+[QE] BIG ONE! Added inline editing capability!
+[QE] New module: multipage
+[QE] Update module: slideshow now can be categorized
+
+Version 16.2.0 / 20170924:
+[QE] As always, bug fixes
+[QE] Pages now can limit who can download attachment
+[QE] Which means, removing of file download permissions
+
+Version 16.1.0 / 20170824:
+[QE] As always, bug fixes
+[QE] Add more permissions
+[QE] Tidy up image library
+[QE] Drop Newsletter feature. You can use mailchimp or yahoogroups to manage newsletter.
+[QE] Drop country table, replaced with /includes/countrylist.php file.
+[QE] Admin can no longer login from front end. This will defeat the purpose of renaming the ACP.
+
+Version 16.0.0 / 20170722:
+[QE] Mandatory bug fixes
+[QE] Image library now show thumbnails instead of just list of text
+[QE] Users & administrators privileges editor
+[QE] Custom privileges to add more permissions
+[QE] You can rename /admin/ folder to anything else to increase site security, don't forget to edit the settings in /includes/db_config.php
+[QE] Replace main menu javascript from superfish, hoverintent & tinynav to bootstrap nav menu
+[QE] Updated Jquery to 3.2.1
+[QE] Tweak the default skin design
+
+Version 15.0.0:
+[QE] More bug fixes
+[QE] Update JS libraries to latest versions, except chart.js, as version 2.0 is way much bigger than current one
+[QE] Utilizing qadmin_log, you can now restore changed contents to older ones... Time Machine thingy
+[QE] Change qAdmin Section into tabs for much cleaner interface
+[QE] UI now has ACP short cuts when logged in as admin
+[QE] Replace Google RSS with internal script
+[QE] Removing IE8 supports. If you still need IE8 supports, please see https://code.google.com/archive/p/css3-mediaqueries-js/source/default/source
+[QE] Removing BB code supports, as it is obsolete by now. Long life simplicity!
+[QE] Modify international clock
+[QE] Update installer UI
+
+Version 14.0.0:
+What version 14?
+
+Version 13.0.0:
+[QE] More bug fixes
+[QE] Merge module_config table into config table
+[QE] Debug mode now visible even if not login as administrator (see 12.0.0)
+[QE] Fix {$} problem in language editor
+[QE] Fileman > Text Editor now use Code Editor for .html, .js, .css & .xml
+[QE] Add breadcrumbs
+[QE] Google Map picker now require Google API Key
+[QE] Module > Page Gallery supports custom template
+[QE] Menu manager supports programmable menu
+[QE] Sitemap now uses a template files
+[QE] qTPL supports inline section
+[QE] Even deeper bootstrap integration, I hope twitter doesn't discontinue bootstrap in near future
+
+Version 12.0.0:
+[QE] More bug fixes
+[QE] Replace (almost) all icon images with Bootstrap Glyphons
+[QE] Change default "detailed log" to false
+[QE] Removed internal 'edit-opt'
+[QE] New qCache mode
+[QE] Improved menu editor
+[QE] No more HTTPS auto swithcer, it is either 100% secure connection or not at all
+[QE] Removed module's qSearch
+[QE] Removed redundant links from module documentation
+[QE] Uploaded files/images in qAdmin must be removed before user can upload new ones
+[QE] Added Google Map location picker
+[QE] Simplify site search result
+[QE] Added sub template support
+[QE] Page editor now support sub template & page template
+[QE] Remove BB code support
+[QE] Debug info only visible to administrators only
+[QE] Remove bootstrap 3D theme, and replaced it with default flat theme. You can always download the 3D theme from bootstrap
+
+Version 11.1.0:
+[QE] Bug fixes
+[QE] Less images, more glyphicon
+[QE] New feature: watermark
+[QE] New feature: hidden pages can be displayed in page list & search, but content still hidden
+
+Version 11.0.0:
+[QE] Bug fixes
+[QE] New status for page: draft, published: public, member only, admin only
+[QE] Content type now have: default sorting method
+[QE] Improved qComments
+[QE] qComments now using ajax & can be approved by email
+[QE] Site Slogan!
+[QE] Modules are now easier to edit & manage
+[QE] Popup shortcuts to manage modules if you are logged in as admin
+[QE] New debug information: tpl files used
+
+Version 10.0.0:
+[QE] Bug fixes
+[QE] Update Bootstrap to 3.3.4
+[QE] Update jQuery to 1.11.2
+[QE] Update tinyMCE to 4.1.9
+[QE] Update File Manager to accomodate new tinyMCE
+[QE] Update other javascript libraries to newest one
+[QE] Now bootstrap includes all default theme, component, javascript & css; including glyphons
+[QE] Redesign the ACP! Awesome!
+[QE] New default skin! Finally!
+
+Version 9.0.0:
+[QE] Bug fixes
+[QE] Replace Flash charts with HTML5 charts (chartjs.org)
+[QE] Starting to use bootstrap grid system, I hope in the future I can implement more bootstrap grid
+[QE] ACP minor redesign, perhaps in qE10 I will introduce new ACP ?
+[QE] Menu editor now can include another menu as sub menu
+[QE] I'm learning JavaScript, so I will implement more javascript starting from this version
+[QE] Restructure some files & folders
+
+Version 8.0.0:
+[QE] Add Facebook Like & Comments
+[QE] Add Twitter Share
+[QE] Default skin now uses 'px' for fonts instead of 'pt' (some modern browsers display 'px' better than 'pt')
+[QE] Fix ezForm script
+[QE] Update Page Editor's see also
+[QE] Security fixes & bug fixes
+
+Version 7.0.0:
+[QE] Change jQuery Tools with Bootstrap 3.1.1
+[QE] Update jQuery to v1.11.0
+[QE] Add 'multi lingual' support
+[QE] Closed web site now can still be browsed by administrators
+[QE] Add RSS feed for C97.net
+[QE] Change mySQL to mySQLi
+[QE] Merge local config & qE config into one table
+[QE] Update default skin to HTML5
+[QE] Security fixes & bug fixes
+
+Version 6.0.0 (qEngine X):
+[QE] Add ACP notification center
+[QE] Add ACP qadmin log
+[QE] Update default & admin skin
+[QE] Update SEF URL to friendlier version
+[QE] Update security by using SHA-512 hashing+sitewide salt
+[QE] Update default skin to responsive layout
+[QE] Update module engine
+[QE] Update menu engine
+[QE] Update page management now consisting pages, news, module contents, etc.
+[QE] Update uploader by only accepting certain files (instead of blocking certain files)
+[QE] Remove unnecessary features, such as tag cloud, fast search, etc.
+[QE] Remove cookies, and replaced by PHP sessions (still need a single cookie though)
+[QE] Fix qcache performance when it's disabled
+[QE] Fix PNG optimizer for transparent PNG's
+[QE] Fix some bugs
+[QE] And many more. Incompatible with previous versions! Too lazy to make an upgrader :)
+
+Version 5.1.0:
+[QE] More features for page_gallery module
+[QE] Upgrade Jquery to v1.7.1
+[QE] Upgrade Google Map to v3
+[QE] Page editor fix
+
+Version 5.0.0:
+[QE] Merge news + page + articles to page management
+[QE] Introducing new method to call a module
+[QE] New menu designer
+[QE] Update TinyMCE to 3.4.6
+[QE] Remove unused features: ip banning, support, news (use contact us instead)
+[QE] Various fixes
+[QE] Add a lot of inline help
+[QE] Changes DB charset to UTF-8
+[QE] New default skin
+[QE] New dev skin
+[QE] New mobile skin
+[QE] NOT COMPATIBLE WITH OLDER qENGINE!
+
+Version 4.1.6:
+[QE] Blank page after installation - http://www.c97.net/forum/index.php?topic=400.0
+[QE] PHP error when using the "�" Symbol - http://www.c97.net/forum/index.php?topic=433.0
+[QE] UTF-8 for email messages - http://www.c97.net/forum/index.php?topic=441.0
+[QE] Custom date & time words - http://www.c97.net/forum/index.php?topic=444.0
+[QE] Renamed /etc/ folder to /misc/ - some servers don't allow user access to /etc/ folder
+
+version 4.1:
+[QE] Optimize qE. Now SQL query only 50% of version 4.0!
+
+version 4.0.1:
+[QE] Minor fixes
+
+version 4.0:
+[QE] Minor fixes
+[QE] Replace guestbook with qComment
+[QE] New skin folder: _common, to simplify skin designing
+[QE] Replace prototype.js with jquery.js
+[QE] Page menu now can be placed in four positions
+[QE] Module now can be placed in eight positions
+
+version 3.5:
+[QE] First public release
+[QE] Not yet used by Kemana or Cart2
+[QE] Some more fixes, but no new features
+
+version 3.4:
+[QE] This version of qE is used by Kemana v1.0-v1.2 & Cart97 PRO v2.0-v2.1
+[QE] Lots of fixes and upgrades
+
+version 3.1.1:
+[QE] Add select/deselect all for multi checkbox
+
+version 3.1.0:
+[QE] Update http-headers to enforce Firefox to accept correct charset
+
+Version 3.0.0:
+[QE] qEngine is now version 3.00; aka qE3
+[QE] Some minor fixes
+[QE] Fix url_to_array function for returning wrong values
+[QE] Fix PNG problem that affects PHP 5.1
+[QE] Fix newsletter template
+[QE] Fix register_process.php
+[QE] Add captcha to: custom form (optional)
+[NEW] Mobile web version
+[NEW] SEO URL, not SEF URL anymore
+[NEW] Improved search result using fast search
+[NEW] Improved word list result
+[NEW] Revamped ACP UI
+[NEW] qCache
+
+Version 2.10.0:
+[QE2] Fix qAdmin for page's additional images.
+[QE2] Fix qAdmin for not recognizing textarea (useful in Custom Form, not in ACP)
+[QE2] Fix cloud tag generator (function.php)
