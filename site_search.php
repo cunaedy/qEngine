@@ -48,6 +48,9 @@ switch ($mod_id) {
 
         $txt['mod_id'] = $mod_id;
         $txt['query'] = stripslashes($query);
+
+        $bc = breadcrumb(array($lang['l_site_search']));
+        $txt = array_merge($txt, $bc);
         $txt['main_body'] = quick_tpl(load_tpl('site_search.tpl'), $txt);
         generate_html_header("$config[site_name] $config[cat_separator] Site Search");
         flush_tpl();

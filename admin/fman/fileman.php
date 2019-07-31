@@ -37,6 +37,10 @@ function get_type($fn)
 }
 
 require './../../includes/admin_init.php';
+
+// request location
+$txt['request_location'] = $config['site_url'].'/'.$qe_admin_folder.'/fman/fileman.php';
+
 admin_check('site_file');
 if ($config['demo_mode']) {
     $txt['main_body'] = "<img src=\"./../../public/image/fman.png\" alt=\"preview\" align=\"center\" />";

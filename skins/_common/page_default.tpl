@@ -1,10 +1,5 @@
-<ol class="breadcrumb">
-	<li><a href="{$site_url}"><span class="glyphicon glyphicon-home"></span></a></li>
-	<!-- BEGINIF $page_cat -->
-	<li>{$page_cat}</li>
-	<!-- ENDIF -->
-	<li class="active">{$page_title}</li>
-</ol>
+{$breadcrumb}
+
 <!-- BEGINIF $enable_inline_edit -->
 <form method="post" action="{$site_url}/{$l_admin_folder}/page.php">
 <input type="hidden" name="isAjax" value="1" />
@@ -29,7 +24,7 @@
 
 <!-- BEGINIF $attachment -->
 <div id="page_attachment">
-	<div class="l1"><span class="glyphicon glyphicon-paperclip"></span></div>
+	<div class="l1"><span class="oi oi-paperclip"></span></div>
 	<div style="float:left"><a href="{$site_url}/page.php?dn={$page_id}" class="popiframe">{$page_attachment}</a> ({$page_attachment_size} KB, {$l_downloaded} {$page_attachment_stat}&times;)</div>
 	<div style="clear:both"></div>
 </div>

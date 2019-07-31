@@ -16,19 +16,19 @@ function confirm_delete (filename)
 </script>
 
 <!-- BEGINIF $tpl_mode == 'thumb' -->
-<h1><span class="glyphicon glyphicon-picture"></span> Image Library</h1>
-<h4 class="pull-left">View Mode <a href="imagelib.php?view=thumb&amp;field={$field}"><span class="glyphicon glyphicon-th"></span></a> <a href="imagelib.php?view=list&amp;field={$field}"><span class="glyphicon glyphicon-th-list"></span></a></h4>
-<h4 class="pull-right"><a href="#upload" class="btn btn-default">Upload Image</a></h4>
+<h2><span class="oi oi-image"></span> Image Library</h2>
+<h5 class="float-left">View Mode <span class="oi oi-grid-two-up mr-2"></span> <a href="imagelib.php?view=list&amp;field={$field}"><span class="oi oi-list-rich"></span></a></h5>
+<p class="float-right"><a href="#upload" class="btn btn-light">Upload Image</a></p>
 <div class="clearfix"></div>
 <p style="background: #369;padding:2px;color:#fff"><b>Directory of {$real_dir}</b></p>
 <div class="row imagelib_wrapper">
 <!-- BEGINBLOCK fileman_item -->
-<div class="col-xs-4 imagelib_item">
+<div class="col-sm-6 col-md-4 col-lg-3 imagelib_item">
 	<div class="imagelib_div">
 		<a href="imagelib.php?cmd=preview&amp;field={$field}&amp;fn={$name}"><img src="{$thumb}" alt="{$name}" /></a>
 		<div class="imagelib_info">
-			<span class="glyphicon glyphicon-time"></span> {$mtime}
-			<a href="javascript:confirm_delete ('{$name}');"><span class="glyphicon glyphicon-remove text-danger"></span></a>
+			<span class="oi oi-clock"></span> {$mtime}
+			<a href="javascript:confirm_delete ('{$name}');"><span class="oi oi-x text-danger"></span></a>
 		</div>
 	</div>
 
@@ -43,25 +43,26 @@ function confirm_delete (filename)
 <!-- ENDIF -->
 
 <!-- BEGINIF $tpl_mode == 'list' -->
-<h1><span class="glyphicon glyphicon-picture"></span> Image Library</h1>
-<h4 class="pull-left">View Mode <a href="imagelib.php?view=thumb&amp;field={$field}"><span class="glyphicon glyphicon-th"></span></a> <a href="imagelib.php?view=list&amp;field={$field}"><span class="glyphicon glyphicon-th-list"></span></a></h4>
-<h4 class="pull-right"><a href="#upload" class="btn btn-default">Upload Image</a></h4>
-<p><b>Directory of {$real_dir}</b></p>
+<h2><span class="oi oi-image"></span> Image Library</h2>
+<h5 class="float-left">View Mode <a href="imagelib.php?view=thumb&amp;field={$field}"><span class="oi oi-grid-two-up mr-2"></span></a> <span class="oi oi-list-rich"></span></h5>
+<p class="float-right"><a href="#upload" class="btn btn-light">Upload Image</a></p>
+<div class="clearfix"></div>
+<p style="background: #369;padding:2px;color:#fff"><b>Directory of {$real_dir}</b></p>
 <table class="fman_list table table-condensed">
 	<tr>
 		<td width="45%" class="fman_list_head">Name</td>
-		<td width="12%" class="fman_list_head" align="right">Size</td>
+		<td width="12%" class="fman_list_head text-right">Size</td>
 		<td width="20%" class="fman_list_head">Date Modified</td>
 		<td width="25%" class="fman_list_head">Tools</td>
 	</tr>
 	<!-- BEGINBLOCK fileman_item -->
 	<tr>
 		<td><a href="#" onclick="AddImage('{$name}')">{$name}</a></td>
-		<td align="right">{$size}</td>
+		<td class="text-right">{$size}</td>
 		<td><small>{$mtime}</small></td>
 		<td>
-			<a href="imagelib.php?cmd=preview&amp;field={$field}&amp;fn={$name}"><span class="glyphicon glyphicon-search"></span></a>
-			<a href="javascript:confirm_delete ('{$name}');"><span class="glyphicon glyphicon-remove text-danger"></span></a>
+			<a href="imagelib.php?cmd=preview&amp;field={$field}&amp;fn={$name}"><span class="oi oi-magnifying-glass"></span></a>
+			<a href="javascript:confirm_delete ('{$name}');"><span class="oi oi-x text-danger"></span></a>
 		</td>
 	</tr>
 	<!-- ENDBLOCK -->
@@ -70,13 +71,13 @@ function confirm_delete (filename)
 <!-- ENDIF -->
 
 <!-- BEGINIF $tpl_mode == 'preview' -->
-<div class="panel panel-default">
-	<div class="panel-body"  style="text-align:center">
+<div class="card">
+	<div class="card-body text-center">
 		<img src="{$image_url}/{$fn}" alt="preview"/>
 		<h3>{$fn}</h3>
 		<p>
 			<a href="#" onclick="AddImage('{$fn}')" class="btn btn-primary" role="button">Use This Image</a>
-			<a href="javascript:window.history.go(-1)" class="btn btn-default" role="button">Cancel</a></p>
+			<a href="javascript:window.history.go(-1)" class="btn btn-light" role="button">Cancel</a></p>
 	</div>
 	<table class="table">
 	<tr><td>Name</td><td>{$image_url}/{$fn}</td></tr>

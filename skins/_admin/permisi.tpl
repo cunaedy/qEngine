@@ -1,9 +1,9 @@
 <form method="post" action="permisi.php">
 	<input type="hidden" name="cmd" value="save" />
 
-	<div class="panel panel-default">
-		<div class="panel-heading"><span class="glyphicon glyphicon-lock"></span> User Level &amp; Permission</div>
-		<div class="panel-body">
+	<div class="card">
+		<div class="card-header"><span class="oi oi-key"></span> User Level &amp; Permission</div>
+		<div class="card-body">
 			<p>Here you can define users' &amp; administrators' permissions to access several area of your web sites.
 			If you need custom privileges, please refer to /{$l_admin_folder}/permisi.php file for information how to create them.</p>
 
@@ -21,7 +21,7 @@
 			</tr>
 			<!-- ENDBLOCK -->
 		</table>
-		<p><span class="glyphicon glyphicon-pencil"></span> <a href="lang.php?tab=1">To modify user &amp; admin titles, use Language Editor.</a></p>
+		<p><span class="oi oi-pencil"></span> <a href="lang.php?tab=1">To modify user &amp; admin titles, use Language Editor.</a></p>
 
 		<h3>Back End Permissions</h3>
 
@@ -71,7 +71,7 @@
 		</table>
 		</div>
 	</div>
-	<button type="reset" class="btn btn-default">Reset</button>
+	<button type="reset" class="btn btn-light">Reset</button>
 	<button type="submit" class="btn btn-primary">Save Changes</button>
 
 </form>

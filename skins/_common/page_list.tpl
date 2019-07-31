@@ -1,20 +1,19 @@
-<ol class="breadcrumb">
-	<li><a href="{$site_url}"><span class="glyphicon glyphicon-home"></span></a></li>
-	<li class="active">{$cat_name}</li>
-</ol>
+{$breadcrumb}
 <!-- BEGINIF $tpl_mode == 'cat' -->
-<div class="panel panel-default">
-	<div class="panel-heading"><h1 style="margin:0">{$cat_name}</h1></div>
-	<div class="panel-body">
+<div class="card">
+	<div class="card-header"><h1 style="margin:0">{$cat_name}</h1></div>
+	<div class="card-body">
 		<div style="margin:0 10px 0 0; float:left;"><img src="{$site_url}/{$cat_image}" alt="{$cat_name}" /></div>
 		<div>{$cat_details}</div>
 		<div style="clear:both"></div>
 	</div>
 <!-- ELSE -->
-<h1>{$l_article_by} {$page_author}</h1>
+<div class="card">
+	<div class="card-header"><h1 style="margin:0">{$l_article_by} {$page_author}</h1></div>
 <!-- ENDIF -->
 
 <!-- BEGINIF $all_cat_list -->
+<div class="table-responsive">
 	<table class="table" width="100%">
 	<tr>
 		<th colspan="2">{$l_other_cat}</th>
@@ -30,29 +29,28 @@
 		<th colspan="2">{$l_contents}</th>
 	</tr>
 	</table>
+</div>
 <!-- ENDIF -->
 
 	<div class="table-responsive">
-	<table class="table" width="100%" border="0">
+	<table class="table">
 	<tr>
 		<th width="15%"></th>
-		<th width="70%"><a href="javascript:sortby('t')">{$l_title}</a></th>
-		<th style="text-align:right" width="15%"><a href="javascript:sortby('d')">{$l_date}</a></th>
+		<th width="70%">{$l_title} {$sortby_t}</th>
+		<th class="text-right" width="15%">{$l_date} {$sortby_d}</th>
 	</tr>
 	<!-- BEGINBLOCK list -->
 	<tr>
-		<td align="center"><a href="{$site_url}/{$page_url}"><img src="{$page_image_thumb}" width="50" alt="{$page_title}" /></a></td>
-		<td><a href="{$site_url}/{$page_url}">{$page_title}</a> {$page_pinned} {$page_attachment} {$page_locked}<div class="small"><span class="glyphicon glyphicon-user"></span> <a href="{$site_url}/page.php?author={$page_author}">{$page_author}</a></div></td>
-		<td align="right">{$page_date}</td>
+		<td class="text-center"><a href="{$site_url}/{$page_url}"><img src="{$page_image_thumb}" width="50" alt="{$page_title}" /></a></td>
+		<td><a href="{$site_url}/{$page_url}">{$page_title}</a> {$page_pinned} {$page_attachment} {$page_locked}<div class="small"><span class="oi oi-person"></span> <a href="{$site_url}/page.php?author={$page_author}">{$page_author}</a></div></td>
+		<td class="text-right">{$page_date}</td>
 
 	</tr>
 	<!-- ENDBLOCK -->
 	</table>
 	</div>
 
-<!-- BEGINIF $tpl_mode == 'cat' -->
 </div>
-<!-- ENDIF -->
 {$pagination}
 
 <form method="get" action="{$site_url}/page.php" id="sortby">

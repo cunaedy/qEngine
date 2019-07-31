@@ -31,6 +31,9 @@ function post_func($cmd, $id, $savenew = false, $old_values, $new_values, $isAja
 // part of qEngine
 require './../includes/admin_init.php';
 
+// request location
+$txt['request_location'] = $config['site_url'].'/'.$qe_admin_folder.'/'.'page.php?qadmin_cmd=list';
+
 // get params
 $gid = get_param('gid');
 $id = get_param('id');
@@ -407,6 +410,9 @@ $qadmin_cfg['search_filtermask'] = $ft;				// mask filter *
 $qadmin_cfg['search_key'] = 'page_id,group_id,page_title,page_body,page_status';		// list other key to search
 $qadmin_cfg['search_key_mask'] = 'ID,Group,Content Title,Content,Status';	// mask other key
 $qadmin_cfg['search_result_mask'] = ',group_def,,,status_def';
+$qadmin_cfg['search_date_field'] = 'page_date';							// search by date field name *
+$qadmin_cfg['search_start_date'] = true;								// show start date *
+$qadmin_cfg['search_end_date'] = true;									// show end date *
 
 // enable qadmin functions, which are: search, list, new, update & remove
 $qadmin_cfg['cmd_default'] = 'list';						// if this script called without ANY parameter
@@ -422,8 +428,8 @@ $qadmin_cfg['footer'] =
 //<![CDATA[
 var sss = '$page_info[page_related]';
 
-$('#".$db_prefix."page-group_id>select').change (function () { document.location = 'page.php?id=$id&qadmin_cmd=new&gid='+this.value });
-$('#".$db_prefix."page-page_related>input').tokenInput('admin_ajax.php?cmd=related_page', { queryParam:'query', preventDuplicates:true, prePopulate:$related_preset});
+$('#".$db_prefix."page-group_id select').change (function () { document.location = 'page.php?id=$id&qadmin_cmd=new&gid='+this.value });
+$('#".$db_prefix."page-page_related input').tokenInput('admin_ajax.php?cmd=related_page', { queryParam:'query', preventDuplicates:true, prePopulate:$related_preset});
 //]]>
 </script>";
 

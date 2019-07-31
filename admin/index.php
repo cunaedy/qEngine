@@ -27,7 +27,7 @@ switch ($cmd) {
             $txt['block_rssfeed'] .= quick_tpl($tpl_block['rssfeed'], $row);
         }
         $txt['main_body'] = quick_tpl($xtpl, $txt);
-        flush_tpl('popup');
+        flush_tpl('adm_popup');
         die;
     break;
 

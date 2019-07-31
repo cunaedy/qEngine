@@ -19,6 +19,9 @@ function post_process($cmd, $id, $savenew)
 // part of qEngine
 require './../includes/admin_init.php';
 
+// request location
+$txt['request_location'] = $config['site_url'].'/'.$qe_admin_folder.'/'.'user.php';
+
 // params
 $id = get_param('id');
 $cmd = get_param('cmd');

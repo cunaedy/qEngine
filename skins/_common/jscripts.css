@@ -87,7 +87,7 @@ div.token-input-dropdown ul li.token-input-selected-dropdown-item{background-col
 .datepicker:after{content:'';display:inline-block;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:6px solid #fff;position:absolute;top:-6px;left:7px;}
 .datepicker > div{display:none;}
 .datepicker table{width:100%;margin:0;}
-.datepicker td,.datepicker th{text-align:center;width:20px;height:20px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}
+.datepicker td,.datepicker th{text-align:center;width:35px;height:30px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}
 .datepicker td.day:hover{background:#eee;cursor:pointer;}
 .datepicker td.day.disabled{color:#eee;}
 .datepicker td span{display:block;width:47px;height:54px;line-height:54px;float:left;cursor:pointer;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;margin:2px;}

@@ -26,7 +26,7 @@ $page_id = get_param('pid');
 $cid = get_param('cid');
 $author = get_param('author');
 $dn = get_param('dn');
-$sort = get_param('sort');
+$sortby = get_param('sortby');
 $popup = get_param('popup');
 $p = get_param('p', 1);
 
@@ -239,8 +239,10 @@ switch ($cmd) {
             $row['page_thumb'] = empty($row['page_thumb']) ? '' : "<img src=\"$config[site_url]/public/image/$row[page_thumb]\" alt=\"$row[page_title]\" />";
             if ($config['enable_adp'] && $cat_info['permalink']) {
                 $row['page_cat'] = "<a href=\"$config[site_url]/$cat_info[permalink]\">$cat_info[cat_name]</a>";
+                $cat_info['cat_url'] = "$config[site_url]/$cat_info[permalink]";
             } else {
                 $row['page_cat'] = "<a href=\"$config[site_url]/page.php?cid=$cat_info[idx]\">$cat_info[cat_name]</a>";
+                $cat_info['cat_url'] = "$config[site_url]/page.php?cid=$cat_info[idx]";
             }
             $row['page_date'] = convert_date($row['page_date']);
             $row['page_time'] = date('h:ia', $row['page_unix']);
@@ -250,13 +252,20 @@ switch ($cmd) {
             // load tpl
             $tpl = load_page_tpl($page_id, $page_template);
 
+            if ($page_cat) {
+                $bc = breadcrumb(array($cat_info['cat_url'] => $cat_info['cat_name'], $row['page_title']));
+            } else {
+                $bc = breadcrumb(array($row['page_title']));
+            }
+            $row = array_merge($row, $bc);
+
             $row['current_url'] = $config['site_url'].'/'.($config['enable_adp'] ? $row['permalink'] : 'page.php?pid='.$page_id);
             $txt['main_body'] = quick_tpl($tpl, $row);	// reload page.tpl
-            qcache_update('page_'.$page_id.".$p", serialize(array($row['page_cat'], $txt['main_body'])));
+            qcache_update('page_'.$page_id.".$p", serialize(array('bc' => $bc, 'main_body' => $txt['main_body'])));
         } else {
             $foo = unserialize($content);
-            $row['page_cat'] = $foo[0];
-            $txt['main_body'] = $foo[1];
+            $bc = $foo['bc'];
+            $txt['main_body'] = $foo['main_body'];
         }
 
         if ($current_admin_level) {
@@ -265,8 +274,7 @@ switch ($cmd) {
 
         // update hit
         sql_query("UPDATE ".$db_prefix."page SET page_hit=page_hit+1 WHERE page_id = '$page_id' LIMIT 1");
-
-        generate_html_header($config['site_name'].' '.$config['cat_separator'].' '.strip_tags($row['page_cat']).' '.$config['cat_separator'].' '.$row['page_title'], line_wrap(strip_tags($row['page_body'])), $row['page_keyword']);
+        generate_html_header($bc['head'], line_wrap(strip_tags($row['page_body'])), $row['page_keyword']);
 
         // draft page only available to admin only
         if ($row['page_status'] == 'D' && $current_admin_level) {
@@ -326,16 +334,12 @@ switch ($cmd) {
         }
 
         // page list
-        if (empty($sort)) {
-            $sort = $rules['page_sort'];
+        if (!$sortby) {
+            $_GET['sortby'] = $rules['page_sort'];
         }
-        if ($sort == 'd') {
-            $s = 'page_id DESC';
-        } else {
-            $s = 'page_title';
-            $sort = 't';
-        }
-        $s = "page_pinned DESC, $s";
+        $sort = sortby_icon(array('d' => 'page_id', 't' => 'page_title'));
+        $txt = array_merge($txt, $sort);
+        $s = "page_pinned DESC, $sort[sql_sort]";
 
         $txt['block_list'] = '';
 
@@ -378,18 +382,19 @@ switch ($cmd) {
         }
 
         // cat info
+        $bc = breadcrumb(array($info['cat_name']));
         $txt['cat_image'] = empty($info['cat_image']) ? 'skins/_common/images/noimages.gif' : "public/image/$info[cat_image]";
-
-        $txt = array_merge($info, $txt);
         $txt['cid'] = $cid;
         $txt['page_author'] = '';
         $txt['cat_details'] = empty($info['cat_details']) ? '<p>'.$info['cat_name'].'</p>' : $info['cat_details'];
         $txt['sortby'] = create_select_form('sort', $page_sort, $sort);
+
+        $txt = array_merge($info, $txt, $bc);
         $txt['main_body'] = quick_tpl(load_tpl('page_list.tpl'), $txt);	// reload page.tpl
         if ($current_admin_level) {
             $txt['main_body'] = sprintf($lang['edit_pcat_in_acp'], $cid).$txt['main_body'];
         }
-        generate_html_header($config['site_name'].' '.$config['cat_separator'].' '.$info['cat_name']);
+        generate_html_header($bc['head']);
         if ($rules['group_template']) {
             flush_tpl($rules['group_template']);
         } else {
@@ -408,16 +413,12 @@ switch ($cmd) {
         $tpl = load_tpl('page_list.tpl');
 
         // page list
-        if ($sort == 'd') {
-            $s = 'page_unix DESC';
-        } else {
-            $s = 'page_title';
-            $sort = 't';
-        }
+        $sort = sortby_icon(array('d' => 'page_id', 't' => 'page_title'));
+        $txt = array_merge($txt, $sort);
 
         $txt['block_list'] = '';
         $page_status_sql = create_page_status_sql();
-        $foo = sql_multipage($db_prefix.'page', 'page_id, permalink, page_attachment, page_pinned, page_title, page_body, page_image, page_date, page_author, page_status', "($page_status_sql) AND page_author='$author' AND page_list='1'", $s, $p);
+        $foo = sql_multipage($db_prefix.'page', 'page_id, permalink, page_attachment, page_pinned, page_title, page_body, page_image, page_date, page_author, page_status', "($page_status_sql) AND page_author='$author' AND page_list='1'", $sort['sql_sort'], $p);
         foreach ($foo as $k => $v) {
             if ($config['enable_adp'] && $v['permalink']) {
                 $v['page_url'] = $v['permalink'];
@@ -448,11 +449,14 @@ switch ($cmd) {
             $txt['block_list'] .= quick_tpl($tpl_block['list'], $v);
         }
 
+        $author = ucwords($author);
+        $bc = breadcrumb(array($author));
+        $txt = array_merge($txt, $bc);
         $txt['cid'] = 0;
         $txt['page_author'] = $author;
         $txt['sortby'] = create_select_form('sort', $page_sort, $sort);
         $txt['main_body'] = quick_tpl(load_tpl('page_list.tpl'), $txt);	// reload page.tpl
-        generate_html_header($config['site_name'].' '.$config['cat_separator'].' '.ucwords($author));
+        generate_html_header($bc['head']);
         flush_tpl();
     break;
 

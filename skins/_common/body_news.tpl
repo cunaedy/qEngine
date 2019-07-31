@@ -7,7 +7,7 @@
 			{$main_body}
 		</div>
 		<div id="body_right" class="col-sm-12 col-md-4">
-			<div class="body_right_content">
+			<div class="body_right_content mt-4">
 			<h3>{$l_site_news}</h3>
 			<!-- BEGINMODULE page_gallery -->
 			group_id = NEWS

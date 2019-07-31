@@ -20,7 +20,7 @@ if (empty($lang_id)) {
 
 // init vars
 $txt['class0'] = $txt['class1'] = $txt['class2'] = $txt['class3'] = $txt['class4'] = $txt['class5'] = $txt['class6'] = '';
-$txt['class'.$tab] = 'class="active"';
+$txt['class'.$tab] = 'active';
 $langsection = array('properties', 'general', 'datetime', 'special', 'msg', 'mail', 'custom');
 $tpl_def = array('properties', 'else', 'else', 'else', 'else', 'else', 'custom');
 
@@ -30,7 +30,7 @@ $langkeys['properties'] = array('l_long_date_format', 'l_short_date_format', 'l_
 // general words
 $langkeys['general'] = array('l_ok', 'l_submit', 'l_enter_captcha', 'l_captcha_error', 'l_guest', 'l_date', 'l_title', 'l_yes', 'l_no', 'l_none', 'l_up', 'l_down', 'l_left', 'l_right',
 'l_top', 'l_bottom', 'l_never', 'l_na_select', 'l_all', 'l_all_cat', 'l_untitled', 'l_no_description', 'l_pp_top', 'l_pp_last', 'l_pp_next', 'l_pp_prev', 'l_item', 'l_items',
-'l_back', 'l_page', 'l_pages', 'l_print', 'l_downloading', 'l_download_click', 'l_browser_back_button', 'l_open_url', 'l_demo_mode', 'l_login', 'l_login_register',
+'l_back', 'l_page', 'l_pages', 'l_print', 'l_downloading', 'l_download_click', 'l_browser_back_button', 'l_open_url', 'l_demo_mode', 'l_login', 'l_login_register', 'l_login_admin_why',
 'l_logout', 'l_login_why', 'l_you_are_not_login', 'l_you_are_login', 'l_username', 'l_password', 'l_lost_passwd', 'l_reset_passwd', 'l_reset_code',
 'l_account_act', 'l_account_act_why', 'l_account_act_key', 'l_account_act_key_why', 'l_contact_us', 'l_contact_us_form', 'l_register', 'l_register_now',
 'l_email_address', 'l_current_password', 'l_new_password', 'l_confirm_password', 'l_subscribe_newsletter', 'l_subscribe', 'l_unsubscribe', 'l_username_used',
@@ -77,6 +77,10 @@ if (($tab == 0) && !$cmd) {
 } elseif (($tab == 6) && !$cmd) {
     $cmd = 'custom';
 }
+
+// request location
+$txt['request_location'] = $config['site_url'].'/'.$qe_admin_folder.'/'.'lang.php';
+
 
 switch ($cmd) {
     case 'import':
@@ -356,10 +360,10 @@ switch ($cmd) {
         $tpl = load_tpl('adm', 'lang.tpl');
 
         // list of lang
-        $txt['lang_list'] = '';
+        $txt['block_list'] = '';
         $res = sql_query("SELECT DISTINCT lang_id, lang_value FROM ".$db_prefix."language WHERE lang_id != 'en' AND lang_key='_config:lang_name' ORDER BY lang_id");
         while ($row = sql_fetch_array($res)) {
-            $txt['lang_list'] .= "<li><a href=\"lang.php?tab=0&amp;lang_id=$row[lang_id]\">$row[lang_value]</a></li>";
+            $txt['block_list'] .= quick_tpl($tpl_block['list'], $row);
         }
 
         $langcfg = array();
@@ -434,12 +438,13 @@ switch ($cmd) {
 
             // create the form
             $v2 = str_replace('.', '|', $v2);
+            $field = array('k' => $k2, 'v' => $v2, 'val' => $val);
             if ($k == 'msg') {
-                $row['lang_val'] = "<textarea name=\"$v2\" style=\"width:500px;height:50px\">$val</textarea>";
+                $row['lang_val'] = quick_tpl($tpl_section['field_msg'], $field);
             } elseif ($k == 'mail') {
-                $row['lang_val'] = "<textarea name=\"$v2\" style=\"width:500px;height:100px\">$val</textarea>";
+                $row['lang_val'] = quick_tpl($tpl_section['field_mail'], $field);
             } else {
-                $row['lang_val'] = "<input type=\"text\" name=\"$v2\" value=\"$val\" style=\"width:500px\" id=\"textbox_$k2\"/> <a href=\"javascript:change($k2)\" id=\"change_$k2\"><span class=\"glyphicon glyphicon-resize-full\" title=\"expand\"></span></a>";
+                $row['lang_val'] = quick_tpl($tpl_section['field_normal'], $field);
             }
             $txt['block_list'] .= quick_tpl($tpl_block['list'], $row);
         }

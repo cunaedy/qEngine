@@ -1,6 +1,6 @@
-<div class="panel panel-default">
-	<div class="panel-heading"><span class="glyphicon glyphicon-stats"></span> Visitor Statistics</div>
-	<div class="panel-body">
+<div class="card">
+	<div class="card-header"><span class="oi oi-graph"></span> Visitor Statistics</div>
+	<div class="card-body">
 		<!-- BEGINIF $qstat_module -->
 		<div style="max-width:1900px;height:100%;overflow:hidden">
 			<canvas id="canvas" height="300" width="1900"></canvas>
@@ -11,19 +11,19 @@
 	</div>
 </div>
 
-<div class="row">
+<div class="row mt-4">
 	<div class="col-md-6">
-		<div class="panel panel-default">
-			<div class="panel-heading"><span class="glyphicon glyphicon-bullhorn"></span> C97.net Updates <a href="https://www.c97.net" target="_blank" title="visit C97.net"><span style="font-size:12pt;color:#999"  class="glyphicon glyphicon-link"></span></a></div>
-			<div class="panel-body">
+		<div class="card">
+			<div class="card-header"><span class="oi oi-bullhorn"></span> C97.net Updates <a href="https://www.c97.net" target="_blank" title="visit C97.net"><span style="font-size:12pt;color:#999"  class="oi oi-external-link"></span></a></div>
+			<div class="card-body">
 				<iframe src="index.php?cmd=feed" style="border:none;padding:0;margin:0;width:100%;height:100%" name="rssfeed"></iframe>
 			</div>
 		</div>
 	</div>
 	<div class="col-md-6">
-		<div class="panel panel-default">
-			<div class="panel-heading"><span class="glyphicon glyphicon-dashboard"></span> Summary</div>
-			<div class="panel-body">
+		<div class="card">
+			<div class="card-header"><span class="oi oi-dashboard"></span> Summary</div>
+			<div class="card-body">
 				<ul class="list_1" style="margin-bottom: 10px">
 					<li>Last login: {$log_user_id} at {$log_time} from <a href="iplog.php"><span class="badge">{$log_ip_addr}</span></a></li>
 					<li>Registered users at this site: <a href="user.php"><span class="badge">{$total_user}</span></a></li>
@@ -31,7 +31,7 @@
 					<li>New comments to approve: <a href="task.php?mod=qcomment&run=edit.php&qadmin_cmd=list&filter_by=2"><span class="badge">{$num_rev}</span></a></li>
 					<li>Hard disk space: {$free_space} MB free of {$max_space} MB</li>
 					<li>Database space: {$db_size} MB</li>
-					<li>Number of entries in <a href="qadmin_log.php">qe_qadmin_log</a>: {$qadmin_log_qty} items, {$qadmin_log_size} KB</li>
+					<li>Number of entries in <a href="qform_log.php">qe_qform_log</a>: {$qform_log_qty} items, {$qform_log_size} KB</li>
 					<li>Number of entries in <a href="mailog.php">qe_mailog</a>: {$mailog_qty} items, {$mailog_size} KB</li>
 					<li>Number of entries in <a href="iplog.php">qe_ip_log</a>: {$ip_log_qty} items, {$ip_log_size} KB</li>
 				</ul>

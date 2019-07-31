@@ -3,6 +3,9 @@
 require './../includes/admin_init.php';
 admin_check(4);
 
+// request location
+$txt['request_location'] = $config['site_url'].'/'.$qe_admin_folder.'/'.'module.php';
+
 // demo mode?
 if ($config['demo_mode']) {
     admin_die('demo_mode');

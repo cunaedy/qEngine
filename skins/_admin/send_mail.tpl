@@ -1,32 +1,28 @@
-<div class="panel panel-default">
-	<div class="panel-heading"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> Send Email</div>
-	<div class="panel-body">
-		<form method="post" action="sendmail.php">
-			<input type="hidden" name="mode" value="{$mode}" />
-			<table border="0" width="100%" class="table table-form">
-				<tr>
-					<td width="25%">Send Email to</td>
-					<td width="75%"><input type="text" size="50" name="name" value="{$user_id}" /></td>
-				</tr>
-				<tr>
-					<td>Email address</td>
-					<td><input type="text" size="50" name="email" value="{$user_email}" /></td>
-				</tr>
-				<tr>
-					<td>Subject</td>
-					<td><input type="text" size="50" name="subject" value="{$subject}" /></td>
-				</tr>
-				<tr>
-					<td>Message</td>
-					<td>{$email_body}</td>
-				</tr>
-				<tr>
-					<td align="center" colspan="2">
-						<button type="submit" class="btn btn-primary">Submit</button>
-						<button type="reset" class="btn btn-danger">Reset</button>
-					</td>
-				</tr>
-			</table>
-		</form>
+<form method="post" action="sendmail.php">
+	<input type="hidden" name="mode" value="{$mode}" />
+	<div class="card">
+		<div class="card-header"><span class="oi oi-envelope-open" aria-hidden="true"></span> Send Email</div>
+		<div class="card-body">
+
+			<div class="form-group row"><label class="col-md-3 col-form-label">Send Email to</label>
+				<div class="col-md-9"><input type="text" size="50" name="name" value="{$user_id}" class="form-control" /></div>
+			</div>
+
+			<div class="form-group row"><label class="col-md-3 col-form-label">Email address</label>
+				<div class="col-md-9"><input type="text" size="50" name="email" value="{$user_email}" class="form-control" /></div>
+			</div>
+
+			<div class="form-group row"><label class="col-md-3 col-form-label">Subject</label>
+				<div class="col-md-9"><input type="text" size="50" name="subject" value="{$subject}" class="form-control" /></div>
+			</div>
+
+			<div class="form-group row"><label class="col-md-3 col-form-label">Message</label>
+				<div class="col-md-9">{$email_body}</div>
+			</div>
+		</div>
+		<div class="card-footer">
+			<button type="submit" class="btn btn-primary">Submit</button>
+			<button type="reset" class="btn btn-danger">Reset</button>
+		</div>
 	</div>
-</div>
+</form>

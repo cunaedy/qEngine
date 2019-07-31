@@ -2,6 +2,9 @@
 // part of qEngine
 require './../includes/admin_init.php';
 
+// request location
+$txt['request_location'] = $config['site_url'].'/'.$qe_admin_folder.'/'.'page_group.php?qadmin_cmd=list';
+
 // comment def
 $comment_def = array(0 => '- Disabled -');
 if ($config['enable_module_engine']) {

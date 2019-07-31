@@ -17,7 +17,7 @@ preg_match('%<style type="text/css">(.*?)</style>.*?(<body>.*</body>)%s', ob_get
 # $matches [1]; # Style information
 # $matches [2]; # Body information
 ob_start();
-echo "<div class=\"panel panel-default\"><div class=\"panel-heading\">PHP Info</div><div class='phpinfodisplay panel-body'><style type='text/css'>\n",
+echo "<div class=\"card\"><div class=\"card-header\">PHP Info</div><div class='phpinfodisplay card-body'><style type='text/css'>\n",
     join(
         "\n",
         array_map(

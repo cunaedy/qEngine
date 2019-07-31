@@ -65,6 +65,9 @@ switch ($cmd) {
         if (empty($start)) {
             $start = date('Y');
         }
+        else {
+            $start = substr($start, 0, 4);
+        }
         $chart_x = $chart_y1 = $chart_y2 = array();
 
         for ($mo = 1; $mo <= 12; $mo++) {
@@ -96,7 +99,7 @@ switch ($cmd) {
         $txt['total'] = num_format($total, 0, 1);
         $txt['tpv'] = num_format($tpv);
         $txt['tv'] = num_format($tv);
-        $txt['start_date'] = date_form('start', date('Y'), 0, 0, $start);
+        $txt['start_date'] = date_form('start', $start.'-01-01');
         $txt['main_body'] = quick_tpl($tpl, $txt);
         flush_tpl('adm');
     break;
@@ -138,7 +141,7 @@ switch ($cmd) {
         $txt['chart_x'] = implode(',', $chart_x);
         $txt['chart_y1'] = implode(',', $chart_y1);
         $txt['chart_y2'] = implode(',', $chart_y2);
-        $txt['start_date'] = date_form('start', date('Y'), 1, 0, $start);
+        $txt['start_date'] = date_form('start', $start);
         $txt['tpv'] = num_format($tpv);
         $txt['tv'] = num_format($tv);
         $txt['total'] = num_format($total, 0, 1);

@@ -1,6 +1,6 @@
-<div class="panel panel-default">
-	<div class="panel-heading"><span class="glyphicon glyphicon-heart"></span> About</div>
-	<div class="panel-body" style="text-align:center">
+<div class="card">
+	<div class="card-header"><span class="oi oi-heart"></span> About</div>
+	<div class="card-body" style="text-align:center">
 		<p><img src="../skins/_admin/images/qe.png" alt="logo" /></p>
 		<p>Powered by <b>qEngine</b><br />
 		Internal Version: {$qe_ver} (build {$qe_build})</p>

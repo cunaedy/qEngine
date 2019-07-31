@@ -48,7 +48,13 @@ if ($page_id) {
 } elseif ($cid) {
     $sql = "cat_id IN ($cid)";
 } elseif ($gid) {
-    $sql = "group_id = '$gid'";
+    $foo = explode(',', $gid);
+    $fii = array();
+    foreach ($foo as $k => $v) {
+        $fii[] = "'".trim($v)."'";
+    }
+    $gid = implode(',', $fii);
+    $sql = "group_id IN ($gid)";
 } elseif (empty($page_id) && empty($gid) && empty($cid)) {
     $sql = '1=1';
 }
@@ -105,7 +111,7 @@ if ($sectiontpl) {
         $tpl .= '<p>Posted on: {$page_date}</p>';
     }
     if ($more) {
-        $tpl .= '<span class="glyphicon glyphicon-chevron-right"></span> <a href="{$url}">More</a>';
+        $tpl .= '<span class="oi oi-chevron-right"></span> <a href="{$url}">More</a>';
     }
     if ($thumb) {
         $tpl .= '<div style="clear:both"></div>';

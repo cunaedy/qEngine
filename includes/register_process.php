@@ -30,7 +30,7 @@ if (!empty($row['user_email'])) {
 }
 
 // validate entries
-if (!preg_match("/^[[:alnum:]]+$/", $user_id)) {
+if (!preg_match("/^[[:alnum:]@\%_.+-]+$/", $user_id)) {
     $err[] = "$lang[l_username_error]";
 }
 if (!validate_email_address($user_email)) {

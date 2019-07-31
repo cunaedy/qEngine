@@ -1,8 +1,8 @@
 <form id="edit" action="edit.php" method="post">
 <input type="hidden" name="chdir" value="{$chdir}" />
 <input type="hidden" name="fn" value="{$fn}" />
-<div class="panel panel-default">
-	<div class="panel-heading"><span class="glyphicon glyphicon-certificate" aria-hidden="true"></span> Editing: {$fn}</div>
+<div class="card">
+	<div class="card-header"><span class="oi oi-pencil" aria-hidden="true"></span> Editing: {$fn}</div>
 	<table class="table">
 		<!-- BEGINIF $readonly -->
 		<tr>
@@ -13,8 +13,8 @@
 			<td colspan="2"><textarea name="editArea" id="editArea" style="width: 100%; height: 470px">{$html}</textarea></td>
 		</tr>
 		<tr>
-			<td class="adminbg_c"><label><input type="checkbox" name="wrap" id="wrap" onclick="toggleWordWrap(this)"  checked="checked"/> Word Wrap</label></td>
-			<td class="adminbg_c"><input type="submit" name="save" value="Save File" class="btn btn-primary" /></td>
+			<td><label><input type="checkbox" name="wrap" id="wrap" onclick="toggleWordWrap(this)"  checked="checked"/> Word Wrap</label></td>
+			<td><input type="submit" name="save" value="Save File" class="btn btn-primary" /></td>
 		</tr>
 	</table>
 </div>

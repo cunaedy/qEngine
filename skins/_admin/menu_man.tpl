@@ -1,14 +1,14 @@
 <!-- BEGINIF $module_engine -->
 <!-- ELSE -->
-<div class="warning">
+<div class="alert alert-warning">
 Warning! Module Engine is disabled in Primary Config. Menu Manager needs qMenu module to work.
 </div>
 <!-- ENDIF -->
 
 <!-- BEGINIF $tpl_mode == 'list' -->
-<div class="panel panel-default">
-	<div class="panel-heading"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Menu Manager</div>
-	<div class="panel-body">Use Menu Manager to create your own menu. Later you can add your menu on your site using several method: manually, by module, or included in pages.</div>
+<div class="card">
+	<div class="card-header"><span class="oi oi-pencil" aria-hidden="true"></span> Menu Manager</div>
+	<div class="card-body">Use Menu Manager to create your own menu. Later you can add your menu on your site using several method: manually, by module, or included in pages.</div>
 	<table class="table table-bordered">
 		<tr>
 			<th width="15%">Menu ID</td>
@@ -18,19 +18,22 @@ Warning! Module Engine is disabled in Primary Config. Menu Manager needs qMenu m
 		<!-- BEGINBLOCK list -->
 		<tr>
 			<td>{$menu_id}</td><td>{$menu_title}</td>
-			<td><a href="menu_set.php?id={$idx}"><span class="glyphicon glyphicon-list-alt tips" title="Edit properties"></span></a> &nbsp;
-				<a href="menu_man.php?cmd=design&amp;midx={$idx}"><span class="glyphicon glyphicon-pencil tips" title="Reorder menu"></span></a> &nbsp;
-				<a href="menu_man.php?cmd=reorder3&amp;midx={$idx}"><span class="glyphicon glyphicon-refresh tips" title="Refresh cache"></span></a> &nbsp;
-				<a href="menu_man.php?cmd=guide&amp;midx={$idx}"><span class="glyphicon glyphicon-info-sign tips" title="Help on integration"></span></a> &nbsp;
-				<a href="javascript:confirm_remove({$idx})"><span class="glyphicon glyphicon-remove text-danger tips" title="Remove menu"></span></a>
+			<td><a href="menu_set.php?id={$idx}"><span class="oi oi-list tips" title="Edit properties"></span></a> &nbsp;
+				<a href="menu_man.php?cmd=design&amp;midx={$idx}"><span class="oi oi-pencil tips" title="Reorder menu"></span></a> &nbsp;
+				<a href="menu_man.php?cmd=reorder3&amp;midx={$idx}"><span class="oi oi-reload tips" title="Refresh cache"></span></a> &nbsp;
+				<a href="menu_man.php?cmd=guide&amp;midx={$idx}"><span class="oi oi-info tips" title="Help on integration"></span></a> &nbsp;
+				<a href="javascript:confirm_remove({$idx})"><span class="oi oi-x text-danger tips" title="Remove menu"></span></a>
 			</td>
 		</tr>
 		<!-- ENDBLOCK -->
 	</table>
+	<div class="card-footer">
+		<a href="menu_set.php?qadmin_cmd=new" class="btn btn-primary"><span class="oi oi-plus"></span> Add New Menu</a>
+		<a href="menu_man.php?cmd=reorder_all" class="btn btn-light"><span class="oi oi-reload"></span> Refresh Cache for All Menu</a>
+	</div>
 </div>
 
-<p><a href="menu_set.php?qadmin_cmd=new"><span class="glyphicon glyphicon-plus"></span> Add New Menu</a></p>
-<p><a href="menu_man.php?cmd=reorder_all"><span class="glyphicon glyphicon-refresh"></span> Refresh Cache for All Menu</a></p>
+
 
 <script>
 function confirm_remove (id)
@@ -56,30 +59,25 @@ function confirm_remove (id)
 
 
 <!-- BEGINIF $tpl_mode == 'design' -->
-<div class="panel panel-default">
-	<div class="panel-heading"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Menu Designer</div>
-	<div class="panel-body">Here you can design your menu. To add new item, simply click [New Item].</div>
-	<table class="table table-bordered table-hover">
-		<tr>
-			<th colspan="3"><a href="menu_man.php"><span class="glyphicon glyphicon-chevron-left"></span> Back</a></th>
-		</tr>
-		<!-- BEGINBLOCK itemlist -->
-		<tr>
-			<td width="70%">
-				<span style="padding-left:{$pad}px"></span>
-				{$dn} {$up}	{$title} {$show_url}
-			</td>
-			<td width="30%">
-				{$edit_button} &nbsp; {$add_child_button} &nbsp; {$del_button}
+<div class="card">
+	<div class="card-header"><span class="oi oi-pencil" aria-hidden="true"></span> Menu Designer</div>
+	<div class="card-body"><h5 class="card-title">Here you can design your menu. To add new item, simply click [New Item].</h5>
+		<div id="sortable">
+			{$structure}
+		</div>
+	</div>
+	<div class="card-footer">
+		<form method="get" action="menu_man.php" id="fSort">
+			<input type="hidden" name="cmd" value="save" />
+			<input type="hidden" name="midx" value="{$midx}" />
+			<input type="hidden" name="sort" value="" />
+			<button type="button" class="btn btn-primary tips" id="save" title="New position will not be saved until this button clicked."><span class="oi oi-info"></span> Save Order</button>
+			{$add_button}
+		</form>
 
-			</td>
-		</tr>
-		<!-- ENDBLOCK -->
-		<tr>
-			<td colspan="3">{$add_button}</td>
-		</tr>
-	</table>
+	</div>
 </div>
+
 
 {$preview}
 
@@ -90,27 +88,60 @@ function confirm_remove (id, ref)
 	if (!c) return;
 	document.location = "menu_man.php?cmd=del_item&midx={$midx}&iidx="+id+"&ref_idx="+ref;
 }
+
+$(document).ready(function () {
+var nestedSortables = [].slice.call(document.querySelectorAll('.sortable'));
+
+for (var i = 0; i < nestedSortables.length; i++) {
+	new Sortable(nestedSortables[i], {
+		group: 'nested',
+		animation: 150,
+		fallbackOnBody: true,
+		swapThreshold: 0.65
+	});
+}
+
+//https://gist.github.com/gabrielsimoes/469f1b1d6aeb1c391a418700293d3449
+function parseList(list) {
+	var contents = [];
+    list.children().each(function(index, element) {
+        contents[index] = parseItem(element);
+    });
+    return "[" + contents.join(", ") + "]";
+}
+function parseItem(element){
+	return "{ \"id\": \"" + $(element).attr('data-id') + "\", \"children\": " + parseList($(element).children("div.fsort")) + "}";
+}
+
+$('#save').click(function(){
+	var html = $('#sortable').html();
+	var result = parseList($(html));
+	$('#fSort>input[name=sort]').val(result);
+	$('form#fSort').submit();
+})
+});
+
 </script>
 <!-- ENDIF -->
 
 <!-- BEGINIF $tpl_mode == 'guide' -->
-<div class="panel panel-default">
-	<div class="panel-heading"><a href="menu_man.php"><span class="glyphicon glyphicon-chevron-left"></span></a> Legends</h2></div>
+<div class="card">
+	<div class="card-header"><a href="menu_man.php"><span class="oi oi-chevron-left"></span></a> Legends</h2></div>
 	<table width="100%" class="table table-bordered">
 		<tr><th width="12%" valign="top">Icons</th>
 			<th>Functions</th></tr>
-		<tr><td width="12%" valign="top"><span class="glyphicon glyphicon-list-alt icon tips" title="Edit properties"></span> Properties</td>
+		<tr><td width="12%" valign="top"><span class="oi oi-list icon tips" title="Edit properties"></span> Properties</td>
 			<td>Use this to edit menu properties, such as id, title, style, etc.</td></tr>
-		<tr><td width="12%" valign="top"><span class="glyphicon glyphicon-pencil icon tips" title="Reorder menu"></span> Design</td>
+		<tr><td width="12%" valign="top"><span class="oi oi-pencil icon tips" title="Reorder menu"></span> Design</td>
 			<td>Use this to design your menu: adding items, removing items, rearrange, etc.</td></tr>
-		<tr><td width="12%" valign="top"><span class="glyphicon glyphicon-refresh icon tips" title="Refresh cache"></span> Refresh</td>
+		<tr><td width="12%" valign="top"><span class="oi oi-reload icon tips" title="Refresh cache"></span> Refresh</td>
 			<td>Use this to refresh menu cache. You should do this if the menu doesn't appear correctly, or if you are changing
 			'Enable Search Engine Friendly URLS' value in Primary Config.</td></tr>
-		<tr><td width="12%" valign="top"><span class="glyphicon glyphicon-remove text-danger icon tips" title="Remove menu"></span> Delete</td>
+		<tr><td width="12%" valign="top"><span class="oi oi-x text-danger icon tips" title="Remove menu"></span> Delete</td>
 			<td>Use this to remove a menu and its items.</td></tr>
 	</table>
-	<div class="panel-heading"><a href="menu_man.php"><span class="glyphicon glyphicon-chevron-left"></span></a> Integration Guide</div>
-	<div class="panel-body">
+	<div class="card-header"><a href="menu_man.php"><span class="oi oi-chevron-left"></span></a> Integration Guide</div>
+	<div class="card-body">
 		<p>There are three ways to integrate your menu to qEngine design:</p>
 		<ul>
 			<li>Module method</li>

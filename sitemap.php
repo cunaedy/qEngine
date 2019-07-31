@@ -22,6 +22,9 @@ while ($grow = sql_fetch_array($gres)) {
 // end
 $output .= "</ul>\n";
 $txt['the_sitemap'] = str_replace("<ul>\n</ul>", '', $output);
+
+$bc = breadcrumb(array($lang['l_sitemap']));
+$txt = array_merge($txt, $bc);
 $txt['main_body'] = quick_tpl(load_tpl('sitemap.tpl'), $txt);
-generate_html_header("$config[site_name] $config[cat_separator] Site Map");
+generate_html_header($bc['head']);
 flush_tpl('site');

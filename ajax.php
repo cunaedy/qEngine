@@ -15,6 +15,7 @@ switch ($cmd) {
                 flush_json(1);
             }	// 1 = username is ok
         }
+        flush_json(0) ;
     break;
 
 
@@ -31,6 +32,7 @@ switch ($cmd) {
                 flush_json(1);
             }	// 1 = email is ok
         }
+        flush_json(0) ;
     break;
 
 

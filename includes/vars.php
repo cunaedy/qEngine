@@ -32,7 +32,7 @@ if ($current_user_info['user_level'] < 1) {
     $current_user_info['user_level'] = 0;
 }
 if ($current_user_info['admin_level'] < 1) {
-    $current_user_info['user_level'] = 0;
+    $current_user_info['admin_level'] = 0;
 }
 if ($current_user_info['admin_level'] && $config['enable_inline_edit']) {
     $config['enable_inline_edit'] = $enable_inline_edit = true;
@@ -93,17 +93,20 @@ $menu_man_preset['--'] = 'Other (please specify below)';
 
 // others
 $lang['l_admin_folder'] = $config['admin_folder'] = $qe_admin_folder;
-$lang['edit_in_acp'] = "<span class=\"edit_in_acp\"><a href=\"$config[site_url]/$config[admin_folder]/page.php?id=%s\" target=\"acp\" class=\"btn btn-xs btn-default\">Edit Page in ACP</a></span>";
-$lang['edit_pcat_in_acp'] = "<div class=\"edit_in_acp\"><a href=\"$config[site_url]/$config[admin_folder]/page_cat.php?id=%s\" target=\"acp\" class=\"btn btn-xs btn-default\">Edit in ACP</a></div>";
-$lang['edit_in_acp_module'] = "<div class=\"edit_in_acp\"><div class=\"btn-group\"><button type=\"button\" class=\"btn btn-default btn-xs dropdown-toggle\" data-toggle=\"dropdown\">Edit Module <span class=\"caret\"></span></button><ul class=\"dropdown-menu\">
-      <li><a href=\"%1\$s\" target=\"acp\"><span class=\"glyphicon glyphicon-pencil\"></span> Contents</a></li>
-	  <li><a href=\"%2\$s\" target=\"acp\"><span class=\"glyphicon glyphicon-cog\"></span> Properties</a></li>
-	  <li><a href=\"%3\$s\" target=\"acp\"><span class=\"glyphicon glyphicon-book\"></span> Documentation</a></li>
-      </ul></div></div>";
-$lang['page_pinned'] = "<span class=\"glyphicon glyphicon-pushpin\"></span>";
-$lang['page_locked'] = "<span class=\"glyphicon glyphicon-eye-close\"></span>";
-$lang['page_unlocked'] = "<span class=\"glyphicon glyphicon-eye-open\"></span>";
-$lang['page_attachment'] = "<span class=\"glyphicon glyphicon-paperclip\"></span>";
+$lang['edit_in_acp'] = "<span class=\"edit_in_acp\"><a href=\"$config[site_url]/$config[admin_folder]/page.php?id=%s\" target=\"acp\" class=\"btn btn-sm btn-light\">Edit Page in ACP</a></span>";
+$lang['edit_pcat_in_acp'] = "<div class=\"edit_in_acp\"><a href=\"$config[site_url]/$config[admin_folder]/page_cat.php?id=%s\" target=\"acp\" class=\"btn btn-sm btn-light\">Edit in ACP</a></div>";
+$lang['edit_in_acp_module'] = "<div class=\"edit_in_acp\"><div class=\"dropdown\"><button type=\"button\" class=\"btn btn-light btn-sm dropdown-toggle\" data-toggle=\"dropdown\">Edit Module</button>
+	  <div class=\"dropdown-menu\">
+      <a href=\"%1\$s\" target=\"acp\" class=\"dropdown-item\"><span class=\"oi oi-pencil\"></span> Contents</a>
+	  <a href=\"%2\$s\" target=\"acp\" class=\"dropdown-item\"><span class=\"oi oi-cog\"></span> Properties</a>
+	  <a href=\"%3\$s\" target=\"acp\" class=\"dropdown-item\"><span class=\"oi oi-book\"></span> Documentation</a>
+	  </div>
+	  </div></div>";
+
+$lang['page_pinned'] = "<span class=\"oi oi-pin\"></span>";
+$lang['page_locked'] = "<span class=\"oi oi-lock-locked\"></span>";
+$lang['page_unlocked'] = "<span class=\"oi oi-lock-unlocked\"></span>";
+$lang['page_attachment'] = "<span class=\"oi oi-paperclip\"></span>";
 $lang['l_required_symbol'] = '<span style="color:#f00"><b>&bull;</b></span>';
 $lang['l_cur_name'] = $config['num_currency'];
 $lang['l_weight_name'] = $config['weight_name'];
@@ -129,7 +132,12 @@ if (empty($base_url)) {
 if (strpos($base_url, '/admin')) {
     $txt['request_location'] = str_replace($config['site_url'].'/'.$qe_admin_folder.'/', '', $base_url);
 }
-$txt['print_this_page'] = str_replace('?&amp;', '?', $base_url.'&amp;print_version=1');
+if (strpos($base_url, '?')) {
+    $txt['print_this_page'] = str_replace('?&amp;', '?', $base_url.'&amp;print_version=1');
+} else {
+    $txt['print_this_page'] = $base_url.'?print_version=1';
+}
+
 
 ###
 ### the following words are rarely changed...

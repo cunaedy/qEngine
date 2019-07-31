@@ -275,31 +275,3 @@ function add_new_language($lang_id, $lang_key, $lang_value)
         }
     }
 }
-
-
-// pid = primary ID of the logged item
-// title = title of the logged item
-// action = see constants above
-// $olds = old values (empty to ignore) ARRAY
-// $news = new values (empty to ignore) ARRAY
-// $table = table name
-function qadmin_log($pid, $title, $action, $old, $new, $table)
-{
-    global $current_user_id, $db_prefix;
-    $fn = basename($_SERVER['SCRIPT_NAME']);
-
-    // serialize old & new values
-    if (!empty($old)) {
-        $old = base64_encode(gzcompress(serialize($old)));
-    }
-    if (!empty($new)) {
-        $new = base64_encode(gzcompress(serialize($new)));
-    }
-    if (is_array($new)) {
-        $new = '';
-    }
-    $ip = get_ip_address();
-
-    sql_query("INSERT INTO ".$db_prefix."qadmin_log
-        SET log_date=UNIX_TIMESTAMP(), log_file='$fn', log_table='$table', log_user='$current_user_id', log_ip='$ip', log_pid='$pid', log_title='$title', log_action='$action', log_previous='$old', log_now='$new'");
-}

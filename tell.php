@@ -40,8 +40,11 @@ switch ($cmd) {
         qvc_init(3);
         $usr = get_user_info();
 
+        $bc = breadcrumb(array($lang['l_tell_friend']));
+        $usr = array_merge($usr, $bc);
         $txt['main_body'] = quick_tpl(load_tpl('tell.tpl'), $usr);
-        generate_html_header();
+
+        generate_html_header($bc['head']);
         flush_tpl();
     break;
 }

@@ -3,6 +3,9 @@
 require './../includes/admin_init.php';
 admin_check('site_log');
 
+// request location
+$txt['request_location'] = $config['site_url'].'/'.$qe_admin_folder.'/'.'mailog.php';
+
 $mode = get_param('mode');
 $log_id = get_param('log_id');
 $p = get_param('p', 1);

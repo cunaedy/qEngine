@@ -9,6 +9,9 @@
 
 require './../includes/admin_init.php';
 
+// request location
+$txt['request_location'] = $config['site_url'].'/'.$qe_admin_folder.'/'.'manage.php';
+
 admin_check('1');
 
 $mod_id = get_param('mod');

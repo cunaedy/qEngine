@@ -67,3 +67,14 @@ if ($xml) {
     $row['subblock_module'] = quick_tpl($tpl_subblock['module'], $row);
     $txt['block_module'] = quick_tpl($tpl_block['module'], $row);
 }
+
+// qadmin_cmd compatibility
+$qcmd = get_param('qform_cmd');
+if (!empty($qcmd)) {
+    $_GET['qadmin_cmd'] = $qcmd;
+} else {
+    $qcmd = post_param('qform_cmd');
+    if (!empty($qcmd)) {
+        $_POST['qadmin_cmd'] = $qcmd;
+    }
+}

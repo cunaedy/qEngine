@@ -11,7 +11,7 @@
 		<div class="comment_helpful">{$comment_helpful}<br />{$conc_num}</div>
 	</div>
 	<div class="comment_box_left">
-		<span class="glyphicon glyphicon-user"></span> {$comment_user} <span class="glyphicon glyphicon-time"></span> {$comment_date}
+		<span class="oi oi-person"></span> {$comment_user} <span class="oi oi-clock"></span> {$comment_date}
 	</div>
 	<div style="clear:both"></div>
 </div>
@@ -46,7 +46,7 @@
 <!-- BEGINIF $module_mode == 'most' -->
 <ul class="list_2 qcomment_most">
 <!-- BEGINBLOCK list -->
-<li class="comment_shorten"><a href="{$item_url}">{$item_title}</a> <span class="glyphicon glyphicon-comment"></span> {$total}</li>
+<li class="comment_shorten"><a href="{$item_url}">{$item_title}</a> <span class="oi oi-comment-square"></span> {$total}</li>
 <!-- ENDBLOCK -->
 </ul>
 <!-- ENDIF -->

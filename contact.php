@@ -63,8 +63,12 @@ switch ($cmd) {
         $txt['site_slogan'] = $config['site_slogan'];
         $txt['site_email'] = str_replace('@', '[at]', $config['site_email']);
         $txt['site_address'] = format_address();
+
+        $bc = breadcrumb(array($lang['l_contact_us']));
+        $txt = array_merge($txt, $bc);
         $txt['main_body'] = quick_tpl(load_tpl('contact.tpl'), $txt);
-        generate_html_header("$config[site_name] $config[cat_separator] Contact Us");
+
+        generate_html_header($bc['head']);
         flush_tpl();
     break;
 }

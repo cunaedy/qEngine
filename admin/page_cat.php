@@ -2,6 +2,9 @@
 // part of qEngine
 require './../includes/admin_init.php';
 
+// request location
+$txt['request_location'] = $config['site_url'].'/'.$qe_admin_folder.'/'.'page_cat.php?qadmin_cmd=list';
+
 // get params
 $id = get_param('id');
 if (empty($id)) {

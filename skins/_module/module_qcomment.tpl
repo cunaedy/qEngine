@@ -1,11 +1,8 @@
-<ol class="breadcrumb">
-	<li><a href="{$site_url}"><span class="glyphicon glyphicon-home"></span></a></li>
-	<li class="active">Comments on "{$title}"</li>
-</ol>
-
+{$breadcrumb}
 {$helpful_js}
 {$the_title}
 {$comment_box}
+<hr />
 <p>There are {$num} comments. {$rating_avg}</p>
 <hr />
 <!-- BEGINIF $current_admin_level -->
@@ -18,19 +15,18 @@
 <!-- BEGINBLOCK comment_quick_approval -->
 <div class="comment_box_not_approved" id="comment_{$comment_id}" style="display:block">
 		<div class="bg-danger">
-			<span class="glyphicon glyphicon-warning-sign"></span> This comment is not yet approved.
-			<a href="{$site_url}/task.php?mod=qcomment&amp;approve={$comment_id}" data-ajax-success-callback="refresh_comment" data-ajax-success-arg="{$comment_id}" class="simpleAjax btn btn-xs"><span class="glyphicon glyphicon-ok" style="padding-left:10px" title="approve"></span></a>
-			<a href="{$site_url}/{$l_admin_folder}/task.php?mod=qcomment&amp;run=edit.php&amp;id={$comment_id}" class="btn btn-xs" target="acp"><span class="glyphicon glyphicon-pencil" style="padding-left:10px" title="edit"></span></a>
-			<a href="{$site_url}/task.php?mod=qcomment&amp;trash={$comment_id}" data-ajax-success-callback="hide_comment" data-ajax-success-arg="{$comment_id}" class="simpleAjax btn btn-xs"><span class="glyphicon glyphicon-trash" style="padding-left:10px" title="remove"></span></a>
+			<span class="oi oi-warning"></span> This comment is not yet approved.
+			<a href="{$site_url}/task.php?mod=qcomment&amp;approve={$comment_id}" data-ajax-success-callback="refresh_comment" data-ajax-success-arg="{$comment_id}" class="simpleAjax btn btn-sm"><span class="oi oi-check" style="padding-left:10px" title="approve"></span></a>
+			<a href="{$site_url}/{$l_admin_folder}/task.php?mod=qcomment&amp;run=edit.php&amp;id={$comment_id}" class="btn btn-sm" target="acp"><span class="oi oi-pencil" style="padding-left:10px" title="edit"></span></a>
+			<a href="{$site_url}/task.php?mod=qcomment&amp;trash={$comment_id}" data-ajax-success-callback="hide_comment" data-ajax-success-arg="{$comment_id}" class="simpleAjax btn btn-sm"><span class="oi oi-trash" style="padding-left:10px" title="remove"></span></a>
 		</div>
 	<div class="comment_box_right">
-
 		<div class="comment_title">{$comment_title} {$rating}</div>
 		<div>{$comment_body}</div>
 	</div>
 	<div class="comment_box_left">
 		<!-- BEGINIF $detail -->
-		<span class="glyphicon glyphicon-user"></span> {$comment_user} <span class="glyphicon glyphicon-time"></span> {$comment_date}
+		<span class="oi oi-person"></span> {$comment_user} <span class="oi oi-clock"></span> {$comment_date}
 		<!-- ENDIF -->
 	</div>
 </div>
@@ -41,9 +37,9 @@
 	<div class="comment_box_right">
 		<!-- BEGINIF $current_admin_level -->
 		<div class="bg-warning">
-			<a href="{$site_url}/task.php?mod=qcomment&amp;m=pagecomment&amp;hold={$comment_id}" data-ajax-success-callback="hide_comment" data-ajax-success-arg="{$comment_id}" class="simpleAjax btn btn-xs"><span class="glyphicon glyphicon-remove" style="padding-left:10px" title="hold"></span></a>
-			<a href="{$site_url}/{$l_admin_folder}/task.php?mod=qcomment&amp;run=edit.php&amp;id={$comment_id}" class="btn btn-xs" target="acp"><span class="glyphicon glyphicon-pencil" style="padding-left:10px" title="edit"></span></a>
-			<a href="{$site_url}/task.php?mod=qcomment&amp;m=pagecomment&amp;trash={$comment_id}" data-ajax-success-callback="hide_comment" data-ajax-success-arg="{$comment_id}" class="simpleAjax btn btn-xs"><span class="glyphicon glyphicon-trash" style="padding-left:10px" title="remove"></span></a>
+			<a href="{$site_url}/task.php?mod=qcomment&amp;m=pagecomment&amp;hold={$comment_id}" data-ajax-success-callback="hide_comment" data-ajax-success-arg="{$comment_id}" class="simpleAjax btn btn-sm"><span class="oi oi-x" style="padding-left:10px" title="hold"></span></a>
+			<a href="{$site_url}/{$l_admin_folder}/task.php?mod=qcomment&amp;run=edit.php&amp;id={$comment_id}" class="btn btn-sm" target="acp"><span class="oi oi-pencil" style="padding-left:10px" title="edit"></span></a>
+			<a href="{$site_url}/task.php?mod=qcomment&amp;m=pagecomment&amp;trash={$comment_id}" data-ajax-success-callback="hide_comment" data-ajax-success-arg="{$comment_id}" class="simpleAjax btn btn-sm"><span class="oi oi-trash" style="padding-left:10px" title="remove"></span></a>
 		</div>
 		<!-- ENDIF -->
 		<div class="comment_title">{$comment_title} {$rating}</div>
@@ -51,10 +47,10 @@
 	</div>
 	<div class="comment_box_left">
 		<!-- BEGINIF $detail -->
-		<span class="glyphicon glyphicon-user"></span> {$comment_user} <span class="glyphicon glyphicon-time"></span> {$comment_date}
+		<span class="oi oi-person"></span> {$comment_user} <span class="oi oi-clock"></span> {$comment_date}
 		<!-- ENDIF -->
 		<!-- BEGINIF $conc -->
-		<a href="#qcomment_form" onclick="init_comment_box('conc','{$conc_id}','{$conc_title_encrypted}','re:{$conc_title}')" class="btn btn-xs"><span class="glyphicon glyphicon-comment" style="padding-left:10px" title="reply"></span></a>
+		<a href="#qcomment_form" onclick="init_comment_box('conc','{$conc_id}','{$conc_title_encrypted}','re:{$conc_title}')" class="btn btn-sm"><span class="oi oi-comment-square" style="padding-left:10px" title="reply"></span></a>
 		<!-- ENDIF -->
 	</div>
 	<div style="clear:both">
@@ -63,8 +59,8 @@
 		<!-- ENDIF -->
 		<!-- BEGINIF $helpful_js -->
 		<div style="float:right">Did you find this comment helpful?
-			<button type="button" name="yes" value="1" class="image" onclick="sendIt('{$comment_id}', 'yes')"><span class="glyphicon glyphicon-thumbs-up"></span></button>
-			<button type="button" name="no" value="1" class="image" onclick="sendIt('{$comment_id}', 'no')"><span class="glyphicon glyphicon-thumbs-down"></span></button>
+			<button type="button" name="yes" value="1" class="image" onclick="sendIt('{$comment_id}', 'yes')"><span class="oi oi-thumb-up"></span></button>
+			<button type="button" name="no" value="1" class="image" onclick="sendIt('{$comment_id}', 'no')"><span class="oi oi-thumb-down"></span></button>
 		</div>
 		<!-- ENDIF -->
 		<div style="clear:both"></div>
@@ -85,7 +81,6 @@
 
 	function refresh_comment (n)
 	{
-		// i'm not good with ajax yet... will be fixed in the future with ajax
 		$('#comment_'+n).hide (400)
 	}
 </script>

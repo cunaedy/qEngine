@@ -54,11 +54,11 @@ switch ($cmd) {
 
              // icon
              if ($mod_type == 'payment') {
-                 $mod_avail[$file]['icon'] = '<span class="glyphicon glyphicon-credit-card icon-xl text-primary"></span>';
+                 $mod_avail[$file]['icon'] = '<span class="oi oi-credit-card icon-xl text-primary"></span>';
              } elseif ($mod_type == 'shipping') {
-                 $mod_avail[$file]['icon'] = '<span class="glyphicon glyphicon-plane icon-xl text-primary"></span>';
+                 $mod_avail[$file]['icon'] = '<span class="oi oi-plane icon-xl text-primary"></span>';
              } else {
-                 $mod_avail[$file]['icon'] = '<span class="glyphicon glyphicon-cog icon-xl text-primary"></span>';
+                 $mod_avail[$file]['icon'] = '<span class="oi oi-cog icon-xl text-primary"></span>';
              }
 
              // is it installed?
@@ -94,6 +94,7 @@ switch ($cmd) {
      $res = sql_query("SELECT * FROM ".$db_prefix."module ORDER BY mod_type, mod_name");
      while ($row = sql_fetch_array($res)) {
          $fn = './module/'.$row['mod_id'].'/ini.xml';
+         $cfg = './module/'.$row['mod_id'].'/configure.php';
          $xml = read_xml($fn);
          $mod_id = $row['mod_id'];
          $row['axsrf'] = $axsrf;
@@ -104,19 +105,26 @@ switch ($cmd) {
          $row['mod_authorEmail'] = $xml['qmodule']['#']['authorEmail'][0]['#'];
 
          if ($row['mod_type'] == 'payment') {
-             $row['icon'] = '<span class="glyphicon glyphicon-credit-card icon-xl text-primary"></span>';
+             $row['icon'] = '<span class="oi oi-credit-card icon-xl text-primary"></span>';
          } elseif ($row['mod_type'] == 'shipping') {
-             $row['icon'] = '<span class="glyphicon glyphicon-plane icon-xl text-primary"></span>';
+             $row['icon'] = '<span class="oi oi-plane icon-xl text-primary"></span>';
          } else {
-             $row['icon'] = '<span class="glyphicon glyphicon-cog icon-xl text-primary"></span>';
+             $row['icon'] = '<span class="oi oi-cog icon-xl text-primary"></span>';
+         }
+
+
+         if (file_exists($cfg)) {
+             $row['configure'] = quick_tpl($tpl_section['config_icon'], $row);
+         } else {
+             $row['configure'] = quick_tpl($tpl_section['no_config_icon'], $row);
          }
 
          if ($row['mod_enabled']) {
              $row['mod_enabled'] = "<a href=\"module.php?cmd=disable&amp;mod_id=$mod_id\"  class=\"module_setup\">".
-                                  "<span class=\"glyphicon glyphicon-ok icon-l\"></span></a>";
+                                  "<span class=\"oi oi-check icon-l\"></span></a>";
          } else {
              $row['mod_enabled'] = "<a href=\"module.php?cmd=enable&amp;mod_id=$mod_id\" class=\"module_setup\">".
-                                  "<span class=\"glyphicon glyphicon-remove icon-l\"></span></a>";
+                                  "<span class=\"oi oi-x icon-l\"></span></a>";
          }
          $txt['block_list'] .= quick_tpl($tpl_block['list'], $row);
      }

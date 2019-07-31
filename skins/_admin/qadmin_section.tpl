@@ -1,49 +1,14 @@
-<!-- BEGINSECTION qadmin_required -->
- <span style="color:#f00"><b>&bull;</b></span>
-<!-- ENDSECTION -->
-
-<!-- BEGINSECTION ezform_required_js -->
- required="required"
-<!-- ENDSECTION -->
-
-<!-- BEGINSECTION qadmin_help -->
- <span class="glyphicon glyphicon-info-sign help tips" title="{$help}"></span>
-<!-- ENDSECTION -->
-
-<!-- BEGINSECTION qadmin_viewfile -->
-  <div><span class="glyphicon glyphicon-file"></span> {$value} - {$size} bytes <a href="{$view}" target="_blank"><span class="glyphicon glyphicon-zoom-in"></span> View File</a> <a href="{$remove}"><span class="glyphicon glyphicon-remove"></span> Remove</a></div>
-<!-- ENDSECTION -->
-
-<!-- BEGINSECTION qadmin_viewimg -->
- <div><span class="glyphicon glyphicon-file"></span> {$value} - {$size} bytes <a href="{$view}" class="lightbox" target="_blank"><span class="glyphicon glyphicon-zoom-in"></span> View Image</a> <a href="{$remove}"><span class="glyphicon glyphicon-remove"></span> Remove</a></div>
-<!-- ENDSECTION -->
-
-<!-- BEGINSECTION qadmin_viewthumb -->
- <img src="{$thumb}" alt="{$value}" />
- <div><span class="glyphicon glyphicon-file"></span> {$value} - {$size} bytes <a href="{$view}" class="lightbox" target="_blank"><span class="glyphicon glyphicon-zoom-in"></span> View Image</a> <a href="{$remove}"><span class="glyphicon glyphicon-remove"></span> Remove</a></div>
-<!-- ENDSECTION -->
-
-<!-- BEGINSECTION qadmin_upload -->
-<input type="file" name="{$field}" {$required_js} />
-<!-- ENDSECTION -->
-
-<!-- BEGINSECTION qadmin_savenew_button -->
-<button type="button" class="btn btn-default" onclick="document.forms['qadmin_form'].qadmin_savenew.value=1;document.forms['qadmin_form'].submit()">Save &amp; New</button>
-<!-- ENDSECTION -->
-
-<!-- BEGINSECTION qadmin_head -->
-<script type="text/javascript">
-<!--
+<!-- BEGINSECTION qform_head -->
+<script>
 function confirm_remove ()
 {
 	c = window.confirm ("Do you wish to remove this item?\nThis process can not be un-done!");
 	if (!c) return false;
 	document.location = "{$action}qadmin_cmd=remove_item&primary_val={$primary_val}";
 }
--->
 </script>
 
-<form method="post" name="qadmin_form" id="qadmin_form" action="{$action}" enctype="{$enctype}">
+<form method="post" name="qadmin_form" id="qadmin_form" action="{$action}" enctype="{$enctype}" class="form">
 	<input type="hidden" name="qadmin_cmd" value="{$cmd}" />
 	<input type="hidden" name="qadmin_process" value="1" />
 	<input type="hidden" name="qadmin_savenew" value="0" />
@@ -51,351 +16,378 @@ function confirm_remove ()
 	<input type="hidden" name="primary_val" value="{$primary_val}" />
 <!-- ENDSECTION -->
 
-<!-- BEGINSECTION qadmin_head_inner -->
-<div class="panel panel-default">
-	<div class="panel-heading"><span class="glyphicon glyphicon-pencil"></span> {$title}</div>
-	<div class="panel-body">
-		<ul id="qadmin_tab" class="nav nav-pills">
-			<li>{$back}</li>
-			<li class="active"><a href="#1" data-toggle="tab"><span class="glyphicon glyphicon-home"></span>  Main</a></li>
+<!-- BEGINSECTION qform_head_inner -->
+<h2><span class="oi oi-pencil"></span> {$title}</h2>
+<div class="card">
+	<div class="card-header">
+		<ul id="qadmin_tab" class="nav nav-tabs card-header-tabs">
+			<li class="nav-item"><a href="{$back}" class="nav-link url"><span class="oi oi-chevron-left"></span> Back</a></li>
+			<li class="nav-item"><a href="#tab1" class="nav-link active"><span class="oi oi-home"></span>  Main</a></li>
 			{$tab_list}
 		</ul>
 	</div>
-	<div class="tab-content">
-		<div class="tab-pane active" id="1">
-			<table class="table table-form" id="qadmin_tbl_1">
+	<div class="card-body">
+		<div class="tab-content">
+			<div class="tab-pane active" id="tab1">
 <!-- ENDSECTION -->
 
-<!-- BEGINSECTION qadmin_echo -->
-		<tr>
-			<td style="width:25%"><span class="glyphicon glyphicon-book"></span> {$title}</td><td style="width:75%" id="{$thisid}">{$prefix} {$value} {$suffix} {$help}</td>
-		</tr>
+<!-- BEGINSECTION qform_tab_list_li -->
+			<li class="nav-item"><a href="#tab{$i}" class="nav-link">{$title}</a></li>
 <!-- ENDSECTION -->
 
-<!-- BEGINSECTION qadmin_url -->
-		<tr>
-			<td style="width:25%"><span class="glyphicon glyphicon-link"></span> {$title}</td><td style="width:75%" id="{$thisid}">{$prefix} <a href="{$value}" target="preview">{$value}</a> {$suffix} {$help}</td>
-		</tr>
+<!-- BEGINSECTION qform_divider -->
+			</div>
+
+			<div class="tab-pane" id="tab{$tabindex}">
 <!-- ENDSECTION -->
 
-<!-- BEGINSECTION qadmin_disabled -->
-		<tr>
-			<td style="width:25%">{$title}</td><td style="width:75%">{$prefix} <input type="text" name="{$field}" value="{$value}" disabled="disabled" {$required_js} size="50" /> {$suffix} {$required} {$help}</td>
-		</tr>
+<!-- BEGINSECTION qform_required -->
+<span style="color:#f00" title="Required field" class="tips"><b>&bull;</b></span>
 <!-- ENDSECTION -->
 
-<!-- BEGINSECTION qadmin_static -->
-		<tr>
-			<td style="width:25%"><span class="glyphicon glyphicon-book"></span> {$title}</td><td style="width:75%" id="{$thisid}" >{$prefix} <input type="hidden" name="{$field}" value="{$value}" />{$display_value} {$suffix}</td>
-		</tr>
+<!-- BEGINSECTION qform_required_js -->
+required="required"
 <!-- ENDSECTION -->
 
-<!-- BEGINSECTION qadmin_divider -->
-			</table>
-		</div>
-
-		<div class="tab-pane" id="{$tabindex}">
-			<table class="table table-form" id="qadmin_tbl_{$tabindex}">
+<!-- BEGINSECTION qform_help -->
+<small class="form-text text-muted">{$help}</small>
 <!-- ENDSECTION -->
 
-<!-- BEGINSECTION qadmin_varchar -->
-		<tr>
-			<td style="width:25%"><span class="glyphicon glyphicon-font"></span> {$title}</td>
-			<td style="width:75%" id="{$thisid}">{$prefix} <input type="text" name="{$field}" size="{$size}" value="{$value}" maxlength="{$maxlength}" {$required_js} /> {$suffix} {$required} {$help}</td>
-		</tr>
+<!-- BEGINSECTION qform_viewfile -->
+<div><prefix>{$prefix}</prefix> <span class="form-control">{$value} - {$size} bytes <a href="{$view}" target="_blank"><span class="oi oi-zoom-in"></span> View File</a> <a href="{$remove}"><span class="oi oi-x"></span> Remove</a></span><suffix>{$suffix}</suffix></div>
 <!-- ENDSECTION -->
 
-<!-- BEGINSECTION qadmin_permalink -->
-		<tr>
-			<td style="width:25%"><span class="glyphicon glyphicon-link"></span> {$title}</td>
-			<td style="width:75%" id="{$thisid}" >{$prefix} {$permalink_path}<input type="text" name="{$field}" size="{$size}" value="{$value}" maxlength="{$maxlength}" {$required_js} style="width:50%;max-width:50%;min-width:50%"/> {$suffix} {$required} {$help}</td>
-		</tr>
+<!-- BEGINSECTION qform_viewimg -->
+<div><img src="{$view}" alt="{$value}" class="img-thumbnail" width="200" /></div>
+<div><prefix>{$prefix}</prefix> <span class="form-control">{$value} - {$size} bytes <a href="{$view}" class="lightbox" target="_blank"><span class="oi oi-zoom-in"></span> View Image</a> <a href="{$remove}"><span class="oi oi-x"></span> Remove</a></span><suffix>{$suffix}</suffix></div>
 <!-- ENDSECTION -->
 
-<!-- BEGINSECTION qadmin_email -->
-		<tr>
-			<td style="width:25%"><span class="glyphicon glyphicon-envelope"></span> {$title}</td>
-			<td style="width:75%" id="{$thisid}">{$prefix} <input type="text" name="{$field}" size="{$size}" value="{$value}" maxlength="{$maxlength}" {$required_js} /> <a href="admin_mail.php?mode=mail&amp;email={$value}"><span class="glyphicon glyphicon-send" style="color:inherit" title="send email"></span> </a> {$suffix} {$required} {$help}</td>
-		</tr>
+<!-- BEGINSECTION qform_viewthumb -->
+<div><img src="{$thumb}" alt="{$value}" class="img-thumbnail" /></div>
+<div><prefix>{$prefix}</prefix> <span class="form-control">{$value} - {$size} bytes <a href="{$view}" class="lightbox" target="_blank"><span class="oi oi-zoom-in"></span> View Image</a> <a href="{$remove}"><span class="oi oi-x"></span> Remove</a></span><suffix>{$suffix}</suffix></div>
 <!-- ENDSECTION -->
 
-<!-- BEGINSECTION qadmin_password -->
-		<tr>
-			<td style="width:25%"><span class="glyphicon glyphicon-lock"></span> {$title}</td>
-			<td style="width:75%" id="{$thisid}">{$prefix} <input type="password" name="{$field}" id="{$field}" size="{$size}" value="{$value}" maxlength="{$maxlength}" {$required_js} onkeyup="passwordStrength('{$field}', this.value)" /> {$suffix} {$required} {$help}</td>
-		</tr>
+<!-- BEGINSECTION qform_upload -->
+<prefix>{$prefix}</prefix><div class="custom-file">
+	<input type="file" class="custom-file-input" id="file_{$field}" name="{$field}" class="form-control" {$required_js} />
+	<label class="custom-file-label" for="file_{$field}">Choose file</label></div><suffix>{$suffix}</suffix>
 <!-- ENDSECTION -->
 
-<!-- BEGINSECTION qadmin_checkbox -->
-		<tr>
-			<td style="width:25%"><span class="glyphicon glyphicon-ok-circle"></span> {$title}</td><td style="width:75%" id="{$thisid}">{$prefix} {$checkbox} {$suffix} {$help}</td>
-		</tr>
+<!-- BEGINSECTION qform_savenew_button -->
+<button type="button" class="btn btn-light" onclick="document.forms['qadmin_form'].qadmin_savenew.value=1;document.forms['qadmin_form'].submit()">Save &amp; New</button>
 <!-- ENDSECTION -->
 
-<!-- BEGINSECTION qadmin_date -->
-		<tr>
-			<td style="width:25%"><span class="glyphicon glyphicon-calendar"></span> {$title}</td>
-			<td style="width:75%" id="{$thisid}">{$prefix} {$date_select}
-			<a style="cursor:pointer"><span class="glyphicon glyphicon-calendar calendar" id="date_{$field}" data-date-format="yyyy-mm-dd" data-date="{$value}"></span></a>
-			<script type="text/javascript">var cal=$('#date_{$field}').datepicker().on('changeDate',function(ev){update_date_form('{$field}',ev.date);$('#date_{$field}').datepicker('hide')});</script>
-			{$suffix} {$required} {$help}</td>
-		</tr>
-<!-- ENDSECTION -->
-
-<!-- BEGINSECTION qadmin_time -->
-		<tr>
-			<td style="width:25%"><span class="glyphicon glyphicon-time"></span> {$title}</td>
-			<td style="width:75%" id="{$thisid}">{$prefix} {$time_select} {$suffix} {$help}</td>
-		</tr>
-<!-- ENDSECTION -->
-
-<!-- BEGINSECTION qadmin_text -->
-		<tr>
-			<td style="width:25%"><span class="glyphicon glyphicon-edit"></span> {$title}</td>
-			<td style="width:75%" id="{$thisid}">{$prefix} <textarea name="{$field}" style="width:{$x}px; height:{$y}px" {$required_js}>{$value}</textarea> {$suffix} {$required} {$help}</td>
-		</tr>
-<!-- ENDSECTION -->
-
-<!-- BEGINSECTION qadmin_code -->
-		<tr>
-			<td style="width:25%"><span class="glyphicon glyphicon-edit"></span> {$title}</td>
-			<td style="width:75%" id="{$thisid}">{$prefix} {$code_area} {$suffix} {$required} {$help}</td>
-		</tr>
-<!-- ENDSECTION -->
-
-<!-- BEGINSECTION qadmin_wysiwyg -->
-		<tr>
-			<td style="width:25%"><span class="glyphicon glyphicon-edit"></span> {$title}</td>
-			<td style="width:75%" id="{$thisid}">{$prefix} {$rte_area} {$suffix} {$required} {$help}</td>
-		</tr>
-<!-- ENDSECTION -->
-
-<!-- BEGINSECTION qadmin_select -->
-		<tr>
-			<td style="width:25%"><span class="glyphicon glyphicon-list"></span> {$title}</td>
-			<td style="width:75%" id="{$thisid}">{$prefix} {$data_select} {$edit_opt} {$suffix} {$required} {$help}</td>
-		</tr>
-<!-- ENDSECTION -->
-
-<!-- BEGINSECTION qadmin_radioh -->
-		<tr>
-			<td style="width:25%"><span class="glyphicon glyphicon-list"></span> {$title}</td>
-			<td style="width:75%" id="{$thisid}">{$prefix} {$data_radio} {$edit_opt} {$suffix} {$required} {$help}</td>
-		</tr>
-<!-- ENDSECTION -->
-
-<!-- BEGINSECTION qadmin_radiov -->
-		<tr>
-			<td style="width:25%"><span class="glyphicon glyphicon-list"></span> {$title}</td>
-			<td style="width:75%" id="{$thisid}">{$prefix} {$data_radio} {$edit_opt} {$suffix} {$required} {$help}</td>
-		</tr>
-<!-- ENDSECTION -->
-
-<!-- BEGINSECTION qadmin_multi -->
-		<tr>
-			<td style="width:25%" valign="top"><span class="glyphicon glyphicon-list"></span> {$title}</td>
-			<td style="width:75%" id="{$thisid}">{$prefix} <div style="max-height:300px;overflow:auto">{$data_multi}</div> {$edit_opt} {$suffix} {$required} {$help}</td>
-		</tr>
-<!-- ENDSECTION -->
-
-<!-- BEGINSECTION qadmin_file -->
-		<tr>
-			<td style="width:25%"><span class="glyphicon glyphicon-upload"></span> {$title}</td>
-			<td style="width:75%" id="{$thisid}">{$prefix} {$viewfile} {$suffix} {$required} {$help}</td>
-		</tr>
-<!-- ENDSECTION -->
-
-<!-- BEGINSECTION qadmin_img -->
-		<tr>
-			<td style="width:25%"><span class="glyphicon glyphicon-picture"></span> {$title}</td>
-			<td style="width:75%" id="{$thisid}">{$prefix} {$viewimg} {$suffix} {$required} {$help}</td>
-		</tr>
-<!-- ENDSECTION -->
-
-<!-- BEGINSECTION qadmin_img_set -->
-		<tr>
-			<td style="width:25%"><span class="glyphicon glyphicon-picture"></span> {$title}</td>
-			<td style="width:75%" id="{$thisid}">{$viewimg} <input type="file" name="{$field}" {$required_js} /> {$suffix} {$required} {$help}</td>
-		</tr>
-<!-- ENDSECTION -->
-
-<!-- BEGINSECTION qadmin_thumb -->
-		<tr>
-			<td style="width:25%"><span class="glyphicon glyphicon-picture"></span> {$title}</td>
-			<td style="width:75%" id="{$thisid}">{$prefix} {$viewthumb} {$suffix} {$required} {$help}</td>
-		</tr>
-<!-- ENDSECTION -->
-
-<!-- BEGINSECTION qadmin_img_resize -->
-		<tr>
-			<td style="width:25%"><span class="glyphicon glyphicon-picture"></span> {$title}</td>
-			<td style="width:75%" id="{$thisid}">{$prefix} {$viewimg} {$suffix} {$required} {$help}</td>
-		</tr>
-<!-- ENDSECTION -->
-
-<!-- BEGINSECTION qadmin_edit_opt -->
-		<a href="javascript:open_edit('{$editopt}')"><img src="../skins/_admin/images/editopt.gif" alt="edit options" /></a>
-<!-- ENDSECTION -->
-
-<!-- BEGINSECTION qadmin_remove -->
-		<tr>
-			<td style="background-color:#ffe0e0;width:25%"><span class="glyphicon glyphicon-erase"></span> Remove?</td>
-			<td style="background-color:#ffe0e0;width:75%"><a href="#" onclick="confirm_remove()" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Remove entry</a></td>
-		</tr>
-<!-- ENDSECTION -->
-
-<!-- BEGINSECTION qadmin_foot_inner -->
-	</table>
+<!-- BEGINSECTION qform_echo -->
+<div class="form-group row" id="{$thisid}"><label class="col-md-3 col-form-label">{$title} {$required}</label>
+	<div class="col-md-9"><prefix>{$prefix}</prefix><span class="form-control text-muted bg-light">{$value}</span><suffix>{$suffix}</suffix>
+	{$help}</div>
 </div>
 <!-- ENDSECTION -->
 
-<!-- BEGINSECTION qadmin_foot -->
+<!-- BEGINSECTION qform_url -->
+<div class="form-group row" id="{$thisid}"><label class="col-md-3 col-form-label" for="{$field}">{$title} {$required}</label>
+	<div class="col-md-9"><prefix>{$prefix}</prefix> <input type="url" name="{$field}" id="{$field}" size="{$size}" value="{$value}" maxlength="{$maxlength}" class="form-control" {$disabled} {$required_js} /> <suffix>{$suffix}</suffix>
+	{$help}</div>
+</div>
+<!-- ENDSECTION -->
+
+<!-- BEGINSECTION qform_static -->
+<div class="form-group row" id="{$thisid}"><label class="col-md-3 col-form-label" for="{$field}">{$title} {$required}</label>
+	<input type="hidden" name="{$field}" value="{$value}" />
+	<div class="col-md-9"><prefix>{$prefix}</prefix><span class="form-control">{$value}</span><suffix>{$suffix}</suffix></div>
+</div>
+<!-- ENDSECTION -->
+
+<!-- BEGINSECTION qform_varchar -->
+<div class="form-group row" id="{$thisid}"><label class="col-md-3 col-form-label" for="{$field}">{$title} {$required}</label>
+	<div class="col-md-9"><prefix>{$prefix}</prefix><input type="text" name="{$field}" id="{$field}" size="{$size}" value="{$value}" maxlength="{$maxlength}" class="form-control" {$disabled} {$required_js} /><suffix>{$suffix}</suffix>
+	{$help}</div>
+</div>
+<!-- ENDSECTION -->
+
+<!-- BEGINSECTION qform_disabled -->
+<div class="form-group row" id="{$thisid}"><label class="col-md-3 col-form-label" for="{$field}">{$title} {$required}</label>
+	<div class="col-md-9"><prefix>{$prefix}</prefix><input type="text" name="{$field}" id="{$field}" size="{$size}" value="{$value}" class="form-control" disabled {$required_js} /><suffix>{$suffix}</suffix>
+	{$help}</div>
+</div>
+<!-- ENDSECTION -->
+
+<!-- BEGINSECTION qform_permalink -->
+<div class="form-group row" id="{$thisid}"><label class="col-md-3 col-form-label" for="{$field}">{$title} {$required}</label>
+	<div class="col-md-9"><prefix>{$prefix} {$permalink_path}</prefix> <input type="text" name="{$field}" id="{$field}" size="{$size}" value="{$value}" maxlength="{$maxlength}" class="form-control" {$disabled} {$required_js} /> <suffix>{$suffix}</suffix>
+	{$help}</div>
+</div>
+<!-- ENDSECTION -->
+
+<!-- BEGINSECTION qform_email -->
+<div class="form-group row" id="{$thisid}"><label class="col-md-3 col-form-label" for="{$field}">{$title} {$required}</label>
+	<div class="col-md-9">
+		<div class="input-group"><prefix>{$prefix}</prefix><input type="email" name="{$field}" id="{$field}" size="{$size}" value="{$value}" maxlength="{$maxlength}" class="form-control" {$disabled} {$required_js} />
+			<div class="input-group-append"><span class="input-group-text"><a href="admin_mail.php?mode=mail&amp;email={$value}"><span class="oi oi-envelope-closed" style="color:inherit" title="send email"></span></a></span></div>
+			<suffix>{$suffix}</suffix>
+			{$help}
 		</div>
 	</div>
-<div class="pull-right" style="margin-bottom:10px">
-	<button type="submit" class="btn btn-primary">Save</button> {$savenew_button} <button type="reset" class="btn btn-default">Reset</button>
+</div>
+<!-- ENDSECTION -->
+
+<!-- BEGINSECTION qform_password -->
+<div class="form-group row" id="{$thisid}"><label class="col-md-3 col-form-label" for="{$field}">{$title} {$required}</label>
+	<div class="col-md-9"><prefix>{$prefix}</prefix> <input type="text" name="{$field}" id="{$field}" size="{$size}" value="{$value}" class="form-control" maxlength="{$maxlength}" autocomplete="new-password" onfocus="this.type='password'" {$disabled} {$required_js} onkeyup="passwordStrength('{$field}', this.value)" /> <suffix>{$suffix}</suffix>
+	{$help}</div>
+</div>
+<!-- ENDSECTION -->
+
+<!-- BEGINSECTION qform_checkbox -->
+<div class="form-group row" id="{$thisid}"><label class="col-md-3 col-form-label">{$title} {$required}</label>
+	<div class="col-md-9"><prefix>{$prefix}</prefix><span class="form-control">{$checkbox}</span><suffix>{$suffix}</suffix>
+	{$help}</div>
+</div>
+<!-- ENDSECTION -->
+
+<!-- BEGINSECTION qform_date -->
+<div class="form-group row" id="{$thisid}"><label class="col-md-3 col-form-label">{$title} {$required}</label>
+	<div class="col-md-9"><prefix>{$prefix}</prefix> {$date_select} <suffix>{$suffix}</suffix>
+	{$help}</div>
+</div>
+<!-- ENDSECTION -->
+
+<!-- BEGINSECTION qform_time -->
+<div class="form-group row" id="{$thisid}"><label class="col-md-3 col-form-label">{$title} {$required}</label>
+	<div class="col-md-9"><prefix>{$prefix}</prefix> {$time_select} <suffix>{$suffix}</suffix>
+	{$help}</div>
+</div>
+<!-- ENDSECTION -->
+
+<!-- BEGINSECTION qform_text -->
+<div class="form-group row" id="{$thisid}"><label class="col-md-3 col-form-label" for="{$field}">{$title} {$required}</label>
+	<div class="col-md-9"><prefix>{$prefix}</prefix>
+	<textarea name="{$field}" id="{$field}" style="height:{$y}px" class="form-control" {$disabled} {$required_js}>{$value}</textarea>
+	<suffix>{$suffix}</suffix>
+	{$help}</div>
+</div>
+<!-- ENDSECTION -->
+
+<!-- BEGINSECTION qform_code -->
+<div class="form-group row" id="{$thisid}"><label class="col-md-3 col-form-label">{$title} {$required}</label>
+	<div class="col-md-9">{$code_area} {$help}</div>
+</div>
+<!-- ENDSECTION -->
+
+<!-- BEGINSECTION qform_wysiwyg -->
+<div class="form-group row" id="{$thisid}"><label class="col-md-3 col-form-label">{$title} {$required}</label>
+	<div class="col-md-9">{$rte_area} {$help}</div>
+</div>
+<!-- ENDSECTION -->
+
+<!-- BEGINSECTION qform_select -->
+<div class="form-group row" id="{$thisid}"><label class="col-md-3 col-form-label">{$title} {$required}</label>
+	<div class="col-md-9"><prefix>{$prefix}</prefix>{$data_select}<suffix>{$edit_opt} {$suffix}</suffix>
+	{$help}</div>
+</div>
+<!-- ENDSECTION -->
+
+<!-- BEGINSECTION qform_radioh -->
+<div class="form-group row" id="{$thisid}"><label class="col-md-3 col-form-label">{$title} {$required}</label>
+	<div class="col-md-9">{$data_radio} {$help}</div>
+</div>
+<!-- ENDSECTION -->
+
+<!-- BEGINSECTION qform_radiov -->
+<div class="form-group row" id="{$thisid}"><label class="col-md-3 col-form-label">{$title} {$required}</label>
+	<div class="col-md-9">{$data_radio} {$help}</div>
+</div>
+<!-- ENDSECTION -->
+
+<!-- BEGINSECTION qform_multi -->
+<div class="form-group row" id="{$thisid}"><label class="col-md-3 col-form-label">{$title} {$required}</label>
+	<div class="col-md-9"><prefix>{$prefix}</prefix> {$data_multi} <suffix>{$suffix}</suffix>
+	{$help}</div>
+</div>
+<!-- ENDSECTION -->
+
+<!-- BEGINSECTION qform_file -->
+<div class="form-group row" id="{$thisid}"><label class="col-md-3 col-form-label">{$title} {$required}</label>
+	<div class="col-md-9">{$viewfile} {$help}</div>
+</div>
+<!-- ENDSECTION -->
+
+<!-- BEGINSECTION qform_img -->
+<div class="form-group row" id="{$thisid}"><label class="col-md-3 col-form-label">{$title} {$required}</label>
+	<div class="col-md-9">{$viewimg} {$help}</div>
+</div>
+<!-- ENDSECTION -->
+
+<!-- BEGINSECTION qform_thumb -->
+<div class="form-group row" id="{$thisid}"><label class="col-md-3 col-form-label">{$title} {$required}</label>
+	<div class="col-md-9">{$viewthumb} {$help}</div>
+</div>
+<!-- ENDSECTION -->
+
+<!-- BEGINSECTION qform_img_resize -->
+<div class="form-group row" id="{$thisid}"><label class="col-md-3 col-form-label">{$title} {$required}</label>
+	<div class="col-md-9">{$viewimg} {$help}</div>
+</div>
+<!-- ENDSECTION -->
+
+<!-- BEGINSECTION qform_img_set -->
+<div class="form-group row" id="{$thisid}"><label class="col-md-3 col-form-label">{$title} {$required}</label>
+	<div class="col-md-9">{$viewimg} {$upload}</div>
+</div>
+<!-- ENDSECTION -->
+
+<!-- BEGINSECTION qform_edit_opt -->
+<a href="edit_opt.php?fid={$editopt}&amp;title=Options&amp;popup=1" class="popiframe_s"><span class="oi oi-spreadsheet"></span></a>
+<!-- ENDSECTION -->
+
+<!-- BEGINSECTION qform_remove -->
+<div class="alert alert-danger"><span class="oi oi-x"></span> <a href="#" class="alert-link" onclick="confirm_remove()">Remove this item</a></div>
+<!-- ENDSECTION -->
+
+<!-- BEGINSECTION qform_foot_inner -->
+				</div>
+			</div>
+<!-- ENDSECTION -->
+
+<!-- BEGINSECTION qform_foot -->
+		</div>
+		<div class="card-footer">
+			<button type="submit" class="btn btn-primary">Save</button> {$savenew_button} <button type="reset" class="btn btn-light">Reset</button>
+		</div>
 </div>
 
-<div style="clear:both"></div>
-
 </form>
-
 {$last_update}
 <span style="color:#f00"><b>&bull;</b></span> Denotes required information
 
 <script>
-var $input = $('#qadmin_form :input[type=text]');
-$input.each(function (){s = $(this).attr('size'); if (s < 50) s = s*15; else s = 650; $(this).css ('max-width', s+'px').css ('min-width', '100px')});
-$('#qadmin').tab
+$('input[type=text]').each(function (){s = $(this).attr('size'); if (s < 50) s = s*15; else s = 650; $(this).css ('max-width', s+'px').css ('min-width', '100px')});
+$('#qadmin_tab a:not(.url)').on('click', function (e) {
+	e.preventDefault()
+	$(this).tab('show')
+  })
 </script>
 <!-- ENDSECTION -->
 
-<!-- BEGINSECTION qadmin_search -->
-<div class="panel panel-default">
-	<div class="panel-heading"><span class="glyphicon glyphicon-search"></span> {$title}</div>
-	<div class="panel-body">
+<!-- BEGINSECTION qform_search -->
+<div class="card">
+	<div class="card-header"><span class="oi oi-magnifying-glass"></span> {$title}</div>
 		<form method="get" name="qadmin_form" action="{$action}">
 		{$hidden_value}
 		<input type="hidden" name="qadmin_cmd" value="search" />
-		<table class="table table-form" id="qadmin_tbl">
+		<table class="table">
 		<tr>
-		<td>Keyword <input type="text" name="keyword" value="{$keyword}" size="50" style="max-width:75%;width:75%;min-width:75%"/> {$search_by}</td>
+		<td width="20%">Keyword</td><td width="60%"><input type="text" name="keyword" value="{$keyword}" class="form-control"/></td><td width="20%">{$search_by}</td>
 		</tr>
 		{$date_form}
 		{$filter_form}
 		<tr>
-		<td><button type="submit" class="btn btn-primary">Search</button> <button type="reset" class="btn btn-danger">Reset</button>
+			<td colspan="3"><button type="submit" class="btn btn-primary">Search</button> <button type="reset" class="btn btn-danger">Reset</button> {$switch_list}</td>
 		</tr>
-		{$switch_list}
+
 		</table>
 		</form>
-	</div>
 <!-- ENDSECTION -->
 
-<!-- BEGINSECTION qadmin_search_date_1 -->
+<!-- BEGINSECTION qform_search_date_1 -->
  <tr>
-  <td>Date {$start_date}</td>
+  <td>Date</td><td colspan="2">{$start_date}</td>
  </tr>
  <tr>
-  <td>Operation for keyword &amp; date {$andor}</td>
- </tr>
-<!-- ENDSECTION -->
-
-<!-- BEGINSECTION qadmin_search_date_2 -->
- <tr>
-  <td>Date from {$start_date} to {$end_date}</td>
- </tr>
- <tr>
-  <td>Operation for keyword &amp; date {$andor}</td>
+  <td>Operation</td><td colspan="2">{$andor}</td>
  </tr>
 <!-- ENDSECTION -->
 
-<!-- BEGINSECTION qadmin_search_filter -->
+<!-- BEGINSECTION qform_search_date_2 -->
  <tr>
-  <td colspan="2">Filter result by {$filter_by}</td>
+  <td>Date</td><td colspan="2">From {$start_date} to {$end_date}</td>
+ </tr>
+ <tr>
+  <td>Operation</td><td colspan="2">{$andor}</td>
  </tr>
 <!-- ENDSECTION -->
 
-<!-- BEGINSECTION qadmin_search_result -->
+<!-- BEGINSECTION qform_search_filter -->
+ <tr>
+  <td>Filter By</td><td colspan="2">{$filter_by}</td>
+ </tr>
+<!-- ENDSECTION -->
+
+<!-- BEGINSECTION qform_search_result -->
 <table class="table table-bordered">
  <tr>
-  <td colspan="{$colspan}" class="adminbg_h">Information Found</td>
+  <td colspan="{$colspan}">Information Found</td>
  </tr>
  <tr>
   {$block_title}
  </tr>
   {$block_result}
 </table>
+
+<div class="card-footer">
+	<div class="row">
+		<div class="col-md-8">{$pagination}</div>
+		<div class="col-md-4">{$new_item_form}</div>
+	</div>
 </div>
-
-<table>
- <tr>
-  <td width="80%" align="right">{$pagination}</td>
-  <td width="20%" align="right">{$new_item_form}</td>
- </tr>
-</table>
-<!-- ENDSECTION -->
-
-<!-- BEGINSECTION qadmin_search_result_none -->
 </div>
 <!-- ENDSECTION -->
 
-<!-- BEGINSECTION qadmin_search_title_row -->
+<!-- BEGINSECTION qform_search_result_none -->
+</div>
+<!-- ENDSECTION -->
+
+<!-- BEGINSECTION qform_search_title_row -->
  <th style="text-align:{$align}" nowrap="nowrap">
-  <a href="{$sort_asc}"><span class="glyphicon glyphicon-menu-up"></span></a>
   {$title}
-  <a href="{$sort_desc}"><span class="glyphicon glyphicon-menu-down"></span></a>
+  {$sortby}
  </td>
 <!-- ENDSECTION -->
 
-<!-- BEGINSECTION qadmin_search_result_row -->
+<!-- BEGINSECTION qform_search_result_row -->
  <td valign="top" style="text-align:{$align}">{$result}</td>
 <!-- ENDSECTION -->
 
-<!-- BEGINSECTION qadmin_search_edit_title -->
+<!-- BEGINSECTION qform_search_edit_title -->
  <th valign="top" style="text-align:center">Edit</th>
 <!-- ENDSECTION -->
 
-<!-- BEGINSECTION qadmin_search_edit_result -->
- <td valign="top" width="100" align="center">&nbsp;<a href="{$edit_url}" target="{$edit_target}">Edit</a>&nbsp;</td>
+<!-- BEGINSECTION qform_search_edit_result -->
+ <td valign="top" width="100" class="text-center">&nbsp;<a href="{$edit_url}" target="{$edit_target}">Edit</a>&nbsp;</td>
 <!-- ENDSECTION -->
 
-<!-- BEGINSECTION qadmin_list -->
-<div class="panel panel-default">
-	<div class="panel-heading"><span class="glyphicon glyphicon-list"></span> {$title}</div>
-	<div class="panel-body">
+<!-- BEGINSECTION qform_list -->
+<div class="card">
+	<div class="card-header"><span class="oi oi-list"></span> {$title}</div>
 		<form method="get" name="qadmin_form" action="{$action}">
 		{$hidden_value}
 		<input type="hidden" name="qadmin_cmd" value="list" />
-		<table class="table table-form">
+		<table class="table">
 		 {$filter_form}
 		 <tr>
-		  <td align="center"><button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-repeat"></span> Refresh</button></td><td align="center">{$switch_search}</td>
+		  <td class="text-center"><button type="submit" class="btn btn-light"><span class="oi oi-reload"></span> Refresh</button></td><td class="text-center">{$switch_search}</td>
 		 </tr>
 		</table>
 		</form>
-	</div>
 <!-- ENDSECTION -->
 
-<!-- BEGINSECTION qadmin_switch_list -->
-<tr>
- <td><a href="{$action}qadmin_cmd=list" class="btn btn-default"><span class="glyphicon glyphicon-list"></span> List All</a></td>
-</tr>
+<!-- BEGINSECTION qform_switch_list -->
+<a href="{$action}qadmin_cmd=list" class="btn btn-light"><span class="oi oi-list"></span> List All</a>
 <!-- ENDSECTION -->
 
-<!-- BEGINSECTION qadmin_switch_search -->
-<a href="{$action}qadmin_cmd=search" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Search Form</a>
+<!-- BEGINSECTION qform_switch_search -->
+<a href="{$action}qadmin_cmd=search" class="btn btn-light"><span class="oi oi-magnifying-glass"></span> Search Form</a>
 <!-- ENDSECTION -->
 
-<!-- BEGINSECTION qadmin_new_item -->
+<!-- BEGINSECTION qform_new_item -->
 <form method="get" name="qadmin_form_new" action="{$action}">
 {$hidden_value}
 <input type="hidden" name="qadmin_cmd" value="new" />
-<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> {$add_button_label}</button>
+<button type="submit" class="btn btn-primary"><span class="oi oi-plus"></span> {$add_button_label}</button>
 </form>
 <!-- ENDSECTION -->
 
-<!-- BEGINSECTION qadmin_send_email -->
+<!-- BEGINSECTION qform_send_email -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -426,9 +418,4 @@ td.form_value { background: #fff; padding: 3px 5px 3px 10px }
 <p>You can also handle this form in <a href="{$site_url}/admin">ACP</a></p>
 </body>
 </html>
-<!-- ENDSECTION -->
-
-
-<!-- BEGINSECTION qadmin_tab_list_li -->
-<li><a href="#{$i}" data-toggle="tab">{$title}</a></li>
 <!-- ENDSECTION -->

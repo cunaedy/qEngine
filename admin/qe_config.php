@@ -57,13 +57,13 @@ closedir($handle);
 $cfg['skin_select'] = create_select_form('skin', $c_skin, $cfg['skin']);
 
 // logo
-$cfg['company_logo'] = empty($cfg['company_logo']) ? '' : "<img src=\"./../public/image/$cfg[company_logo]\" alt=\"logo\" />";
-$cfg['favicon'] = "<img src=\"./../public/image/$cfg[favicon]\" alt=\"favicon\" />";
+$cfg['company_logo'] = empty($cfg['company_logo']) ? '' : ez_thumbnail("./../public/image/$cfg[company_logo]");
+$cfg['favicon'] = empty($cfg['favicon']) ? '' : ez_thumbnail("./../public/image/$cfg[favicon]");
 if (empty($cfg['watermark_file'])) {
     $cfg['watermark'] = '';
     $isWatermark = false;
 } else {
-    $cfg['watermark'] = "<img src=\"./../public/image/$cfg[watermark_file]\" alt=\"watermark\" />";
+    $cfg['watermark'] = "<img src=\"./../public/image/$cfg[watermark_file]\" alt=\"watermark\"  class=\"img-thumbnail\" width=\"100\" />";
     $isWatermark = true;
 }
 
@@ -91,8 +91,8 @@ $cfg['smtp_email'] = create_radio_form('smtp_email', $yesno, $cfg['smtp_email'])
 $cfg['smtp_secure'] = create_select_form('smtp_secure', $smtp_secure_def, $cfg['smtp_secure']);
 $cfg['module_man_radio'] = create_radio_form('enable_module_man', $yesno, $cfg['enable_module_man']);
 $cfg['module_engine_radio'] = create_radio_form('enable_module_engine', $yesno, $cfg['enable_module_engine']);
-$cfg['qadmin_log_radio'] = create_radio_form('enable_qadmin_log', $yesno, $cfg['enable_qadmin_log']);
-$cfg['qadmin_detail_log_radio'] = create_radio_form('enable_detailed_log', $yesno, $cfg['enable_detailed_log']);
+$cfg['qform_log_radio'] = create_radio_form('enable_qform_log', $yesno, $cfg['enable_qform_log']);
+$cfg['qform_detail_log_radio'] = create_radio_form('enable_detailed_log', $yesno, $cfg['enable_detailed_log']);
 $cfg['default_lang_select'] = create_select_form('default_lang', $lang_list, $cfg['default_lang']);
 $cfg['facebook_like'] = create_radio_form('facebook_like', $yesno, $cfg['facebook_like']);
 $cfg['facebook_comment'] = create_radio_form('facebook_comment', $yesno, $cfg['facebook_comment']);

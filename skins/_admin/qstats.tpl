@@ -1,23 +1,23 @@
 <script src="{$site_url}/misc/js/chart.min.js"></script>
-<div class="panel panel-default">
-	<div class="panel-heading"><span class="glyphicon glyphicon-stats"></span> Visitor Statistics</div>
-	<div class="panel-body">
+<div class="card">
+	<div class="card-header"><span class="oi oi-graph"></span> Visitor Statistics</div>
+	<div class="card-body">
 		<div style="max-width:1900px;height:100%;overflow:hidden">
 			<canvas id="canvas" height="300" width="1900"></canvas>
 		</div>
 	</div>
 </div>
 
-<ul class="quick_info" style="margin-bottom:15px">
-	<li><a href="task.php?mod=qstats&amp;run=stats.php&amp;cmd=detail_day">Daily</a></li>
-	<li><a href="task.php?mod=qstats&amp;run=stats.php&amp;cmd=detail_month">Monthly</a></li>
-	<li><a href="task.php?mod=qstats&amp;run=stats.php&amp;cmd=detail_year">Yearly</a></li>
-</ul>
+<div class="btn-group mt-2 mb-2">
+<a href="task.php?mod=qstats&amp;run=stats.php&amp;cmd=detail_day" class="btn btn-light">Daily</a></li>
+<a href="task.php?mod=qstats&amp;run=stats.php&amp;cmd=detail_month" class="btn btn-light">Monthly</a></li>
+<a href="task.php?mod=qstats&amp;run=stats.php&amp;cmd=detail_year" class="btn btn-light">Yearly</a></li>
+</div>
 
 <!-- BEGINIF $tpl_mode == 'detail_day' -->
-<div class="panel panel-default">
-	<div class="panel-heading">Reports</div>
-	<div class="panel-body">
+<div class="card">
+	<div class="card-header">Reports</div>
+	<div class="card-body">
 		<form method="get" action="task.php">
 		<input type="hidden" name="mod" value="qstats" />
 		<input type="hidden" name="run" value="stats.php" />
@@ -26,10 +26,10 @@
 		<button type="submit" class="btn btn-primary">Go!</button>
 		</form>
 	</div>
-	  
+
 	<table class="table table-bordered">
 		<tr>
-			<td class="adminbg_h" colspan="5">Page Views/Visits</td>
+			<td colspan="5">Page Views/Visits</td>
 		</tr>
 		<tr>
 			<th>Date</th>
@@ -54,9 +54,9 @@
 
 
 <!-- BEGINIF $tpl_mode == 'detail_month' -->
-<div class="panel panel-default">
-	<div class="panel-heading">Reports</div>
-	<div class="panel-body">
+<div class="card">
+	<div class="card-header">Reports</div>
+	<div class="card-body">
 		<form method="get" action="task.php">
 		<input type="hidden" name="mod" value="qstats" />
 		<input type="hidden" name="run" value="stats.php" />
@@ -65,10 +65,10 @@
 		<button type="submit" class="btn btn-primary">Go!</button>
 		</form>
     </div>
-   
+
 	<table class="table table-bordered">
 		<tr>
-			<td class="adminbg_h" colspan="5">Page Views/Visits</td>
+			<td colspan="5">Page Views/Visits</td>
 		</tr>
 		<tr>
 			<th>Month</th>
@@ -93,11 +93,11 @@
 
 
 <!-- BEGINIF $tpl_mode == 'detail_year' -->
-<div class="panel panel-default">
-	<div class="panel-heading">Reports</div>
+<div class="card">
+	<div class="card-header">Reports</div>
 <table class="table table-bordered">
 	<tr>
-		<td class="adminbg_h" colspan="5">Page Views/Visits</td>
+		<td colspan="5">Page Views/Visits</td>
 	</tr>
 	<tr>
 		<th>Year</th>

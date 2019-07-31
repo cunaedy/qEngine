@@ -53,6 +53,9 @@ function generate_admin_menu($what)
 require './../includes/admin_init.php';
 admin_check(4);
 
+// request location
+$txt['request_location'] = $config['site_url'].'/'.$qe_admin_folder.'/'.'module.php';
+
 $what = get_param('what');
 $cmd = get_param('cmd');
 $id = get_param('id');

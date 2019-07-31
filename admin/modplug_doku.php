@@ -3,6 +3,9 @@
 require './../includes/admin_init.php';
 admin_check(4);
 
+// request location
+$txt['request_location'] = $config['site_url'].'/'.$qe_admin_folder.'/'.'module.php';
+
 $what = get_param('what');
 $mod_id = get_param('mod_id');
 $plug_id = get_param('plug_id');

@@ -1,5 +1,5 @@
-<div class="panel panel-default">
-	<div class="panel-heading">Uninstall {$name}?</div>
+<div class="card">
+	<div class="card-header">Uninstall {$name}?</div>
 	<form method="get" action="modplug_install.php">
 		<input type="hidden" name="cmd" value="uninstall" />
 		<input type="hidden" name="what" value="{$what}" />
@@ -8,7 +8,7 @@
 			<tr>
 				<td align="center" height="100">Are you sure you want to remove this "<b>{$name}</b>" {$l_modplug}?
 				<p><button type="submit" class="btn btn-danger">Uninstall Now!</button></p>
-				<div class="text-danger"><b><span class="glyphicon glyphicon-warning-sign"></span> This process can not be undone!</b></div>
+				<div class="text-danger"><b><span class="oi oi-warning"></span> This process can not be undone!</b></div>
 				</td>
 			</tr>
 			<tr>

@@ -4,8 +4,8 @@
 // @param rid = result id (to display the result)
 function validateByAjax (fid, ajaxUrl, rid)
 {
-	var isYes = '<span class="glyphicon glyphicon-ok text-success"></span>';
-	var isNo = '<span class="glyphicon glyphicon-remove text-danger"></span>';
+	var isYes = '<span class="oi oi-check text-success"></span>';
+	var isNo = '<span class="oi oi-x text-danger"></span>';
 	var res = false;
 	val = $(fid).val();
 	if (val == '') { $(rid).html (''); return false; }

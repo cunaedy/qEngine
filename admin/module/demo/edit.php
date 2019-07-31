@@ -49,7 +49,7 @@ $qadmin_def['dnotes']['value'] = 'sql';
 $qadmin_cfg['table'] = $db_prefix.'demo';					// table name
 $qadmin_cfg['primary_key'] = 'idx';							// table's primary key
 $qadmin_cfg['primary_val'] = 'dummy';						// primary key value
-$qadmin_cfg['ezf_mode'] = false;							// TRUE to use EZF mode (see /ezf_demo.php), FALSE to use QADMIN
+$qadmin_cfg['ezf_mode'] = false;							// true to use EZF mode (see /ezf_demo.php), false to use QADMIN
 $qadmin_cfg['template'] = 'default';						// template to use
 $qadmin_cfg['action'] = 'task.php?mod=demo&run=edit.php';	// form action <<< this is required for modules!
 
@@ -68,7 +68,7 @@ $qadmin_cfg['search_end_date'] = true;						// show end date *
 
 $qadmin_cfg['search_filterby'] = "dsex='m',dsex='f'";		// filter by sql_query (use , to separate queries) *
 $qadmin_cfg['search_filtermask'] = 'Male,Female';			// mask filter *
-                                                                        
+
 // enable qadmin functions, which are: search, list, new, update & remove
 $qadmin_cfg['cmd_default'] = 'list';						// if this script called without ANY parameter
 $qadmin_cfg['cmd_search_enable'] = true;

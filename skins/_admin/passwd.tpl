@@ -1,15 +1,15 @@
-<div class="panel panel-default">
-	<div class="panel-heading"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Change Admin Password</div>
-	<form method="post" action="passwd.php" target="_parent">
-		<input type="hidden" name="cmd" value="change" />
-		<table class="table table-form" id="passwd">
-			<tr>
-				<td width="30%">Current Password</td><td width="70%"><input type="password" name="curr_passwd" required /></td>
-			</tr>
-			<tr>
-				<td width="30%">New Password</td><td width="70%"><input type="password" name="new_passwd" id="new_passwd" maxlength="255" onkeyup="passwordStrength('new_passwd',this.value)" required /></td>
-			</tr>
-			<tr><td colspan="2" align="center"><button type="submit" class="btn btn-primary">Submit</button></td></tr>
-		</table>
-	</form>
-</div>
+<form method="post" action="passwd.php">
+	<input type="hidden" name="cmd" value="change" />
+	<div class="card">
+		<div class="card-header"><span class="oi oi-key" aria-hidden="true"></span> Change Admin Password</div>
+		<div class="card-body">
+			<div class="form-group row"><label class="col-md-3 col-form-label">Current Password</label>
+				<div class="col-md-9"><input type="password" name="curr_passwd" required class="form-control" /></div>
+			</div>
+			<div class="form-group row"><label class="col-md-3 col-form-label">New Password</label>
+					<div class="col-md-9"><input type="password" name="new_passwd" id="new_passwd" maxlength="255" class="form-control" onkeyup="passwordStrength('new_passwd',this.value)" required /></div>
+			</div>
+		</div>
+		<div class="card-footer"><button type="submit" class="btn btn-primary">Submit</button></div>
+	</div>
+</form>

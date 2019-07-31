@@ -106,7 +106,6 @@ $qadmin_def['menu_url']['help'] = 'Enter a URL, or if you referring to an intern
 // general configuration ( * = optional )
 $qadmin_cfg['table'] = $db_prefix.'menu_item';					// table name
 $qadmin_cfg['primary_key'] = 'idx';						// table's primary key
-$qadmin_cfg['primary_val'] = 'dummy';						// primary key value
 $qadmin_cfg['template'] = 'default';						// template to use
 $qadmin_cfg['back'] = $config['site_url'].'/'.$config['admin_folder'].'/menu_man.php?cmd=design&amp;midx='.$midx;
 
@@ -130,10 +129,8 @@ $qadmin_cfg['post_process'] = 'post_func';
 
 // jq
 $qadmin_cfg['footer'] =
-"<script type=\"text/javascript\">
-//<![CDATA[
-$('#".$db_prefix."menu_item-menu_url>input').autocomplete({ serviceUrl:'admin_ajax.php', params:{cmd:'page'}, onSelect: function(result){  $('#".$db_prefix."menu_item-menu_url>input').val(result.data) } });
-//]]>
+"<script>
+$('#".$db_prefix."menu_item-menu_url input').autocomplete({ serviceUrl:'admin_ajax.php', params:{cmd:'page'}, onSelect: function(result){  $('#".$db_prefix."menu_item-menu_url input').val(result.data) } });
 </script>";
 
 // form title

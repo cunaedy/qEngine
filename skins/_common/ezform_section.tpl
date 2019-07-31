@@ -7,7 +7,7 @@
 <!-- ENDSECTION -->
 
 <!-- BEGINSECTION ezform_help -->
- <span class="glyphicon glyphicon-info-sign help tips" title="{$help}"></span>
+ <span class="oi oi-info help tips" title="{$help}"></span>
 <!-- ENDSECTION -->
 
 <!-- BEGINSECTION ezform_viewfile -->
@@ -48,7 +48,7 @@
 
 <!-- BEGINSECTION ezform_date -->
 {$date_select}
-<a style="cursor:pointer"><span class="glyphicon glyphicon-calendar" id="date_{$field}" class="calendar" data-date-format="yyyy-mm-dd" data-date="{$value}"></span></a>
+<a style="cursor:pointer"><span class="oi oi-calendar" id="date_{$field}" class="calendar" data-date-format="yyyy-mm-dd" data-date="{$value}"></span></a>
 <script type="text/javascript">var cal=$('#date_{$field}').datepicker().on('changeDate',function(ev){update_date_form('{$field}',ev.date);$('#date_{$field}').datepicker('hide')});</script>
 {$required} {$help}
 <!-- ENDSECTION -->

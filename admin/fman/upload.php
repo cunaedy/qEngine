@@ -10,6 +10,10 @@
 
 
 require './../../includes/admin_init.php';
+
+// request location
+$txt['request_location'] = $config['site_url'].'/'.$qe_admin_folder.'/fman/fileman.php';
+
 admin_check('site_file');
 if ($config['demo_mode']) {
     admin_die('demo_mode');

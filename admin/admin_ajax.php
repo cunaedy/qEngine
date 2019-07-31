@@ -55,8 +55,8 @@ switch ($cmd) {
 
     // display list of notification
     case 'notifylist':
-        $output = "<div style=\"text-align:right\"><a href=\"$config[site_url]/$config[admin_folder]/index.php?cmd=notify_read\" title=\"Mark all as read\" style=\"margin-right:10px\"><span class=\"glyphicon glyphicon-eye-close\" aria-hidden=\"true\"></span></a>
-		<a href=\"$config[site_url]/$config[admin_folder]/index.php?cmd=notify_clear\" title=\"Remove all notifications\"><span class=\"glyphicon glyphicon-trash\" aria-hidden=\"true\"></span></a></div>
+        $output = "<div style=\"text-align:right\"><a href=\"$config[site_url]/$config[admin_folder]/index.php?cmd=notify_read\" title=\"Mark all as read\" style=\"margin-right:10px\"><span class=\"oi oi-eye\" aria-hidden=\"true\"></span></a>
+		<a href=\"$config[site_url]/$config[admin_folder]/index.php?cmd=notify_clear\" title=\"Remove all notifications\"><span class=\"oi oi-trash\" aria-hidden=\"true\"></span></a></div>
 		<div style=\"clear:both\"></div>";
 
         $i = 0;

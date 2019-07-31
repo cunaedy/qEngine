@@ -19,7 +19,7 @@ TRUNCATE TABLE `__PREFIX__page`;
 TRUNCATE TABLE `__PREFIX__page_cat`;
 TRUNCATE TABLE `__PREFIX__page_group`;
 TRUNCATE TABLE `__PREFIX__permalink`;
-TRUNCATE TABLE `__PREFIX__qadmin_log`;
+TRUNCATE TABLE `__PREFIX__qform_log`;
 TRUNCATE TABLE `__PREFIX__qcomment`;
 TRUNCATE TABLE `__PREFIX__qcomment_set`;
 TRUNCATE TABLE `__PREFIX__user`;

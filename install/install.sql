@@ -64,7 +64,7 @@ INSERT INTO `__PREFIX__config` (`idx`, `group_id`, `config_id`, `config_value`) 
 (38,  '', 'user_activation',  '0'),
 (39,  '', 'mailog', '1'),
 (40,  '', 'num_curr_name',  'USD'),
-(41,  '', 'qe_version', '16.3.0/20180402'),
+(41,  '', 'qe_version', '17.0.0/20190726'),
 (42,  '', 'company_logo', 'somecompanylogo.png'),
 (43,  '', 'favicon',  'somefavicon.png'),
 (44,  '', 'cache',  '3600'),
@@ -80,7 +80,7 @@ INSERT INTO `__PREFIX__config` (`idx`, `group_id`, `config_id`, `config_value`) 
 (54,  '', 'smtp_sender',  'mymail@example.com'),
 (55,  '', 'enable_module_engine', '1'),
 (56,  '', 'enable_module_man',  '1'),
-(57,  '', 'enable_qadmin_log',  '1'),
+(57,  '', 'enable_qform_log',  '1'),
 (58,  '', 'enable_detailed_log',  '0'),
 (59,  '', 'mobile_version', '0'),
 (60,  '', 'default_lang', 'en'),
@@ -224,6 +224,7 @@ INSERT INTO `__PREFIX__language` (`lang_id`, `lang_key`, `lang_value`) VALUES
 ('en',  'l_login',  'Login'),
 ('en',  'l_login_register', 'Login/Register'),
 ('en',  'l_login_why',  'Enter your username &amp; password to log in.'),
+('en',	'l_login_admin_why',	'If you are an administrator, please use the administrator control panel to login.'),
 ('en',  'l_logout', 'Log Out'),
 ('en',  'l_long_date_format', 'l, F-d-Y'),
 ('en',  'l_lost_passwd',  'Lost Password'),
@@ -274,10 +275,10 @@ INSERT INTO `__PREFIX__language` (`lang_id`, `lang_key`, `lang_value`) VALUES
 ('en',  'l_password_error', 'Password Error!'),
 ('en',  'l_posted_by',  'Posted By'),
 ('en',  'l_posted_on',  'Posted On'),
-('en',  'l_pp_last',  'Last'),
-('en',  'l_pp_next',  '&raquo;'),
-('en',  'l_pp_prev',  '&laquo;'),
-('en',  'l_pp_top', 'First'),
+('en',	'l_pp_last',	'<span class=\"oi oi-media-step-forward\"></span>'),
+('en',	'l_pp_next',	'<span class=\"oi oi-media-skip-forward\"></span>'),
+('en',	'l_pp_prev',	'<span class=\"oi oi-media-skip-backward\"></span>'),
+('en',	'l_pp_top',	'<span class=\"oi oi-media-step-backward\"></span>'),
 ('en',  'l_print',  'Print This Page'),
 ('en',  'l_profile_enter_passwd', 'Enter your current password, in order to change your password or email address'),
 ('en',  'l_quick_search', 'Search in title only (quick search)'),
@@ -325,6 +326,7 @@ INSERT INTO `__PREFIX__language` (`lang_id`, `lang_key`, `lang_value`) VALUES
 ('en',  'l_you_are_here', 'You are here'),
 ('en',  'l_you_are_login',  'You are logged in as'),
 ('en',  'l_you_are_not_login',  'You are not logged in.'),
+('en',	'l_login_admin_why',	'If you are an administrator, please use the administrator control panel to login.'),
 ('en',  'mail.admin_mail',  '<p><b>Hello {$user_id},</b></p>\r\n\r\n<p>[write your message here]</p>'),
 ('en',  'mail.change_pwd',  '<p>Hi, {$user_id}<br />\r\nToday, you or someone else has changed your password to:<br />\r\n<b>{$user_passwd}</b></p>\r\n\r\n<p>If you didn\'t make this change, please login to your account immediately, using the above information, and contact us for more information.</p>\r\n\r\n<p>Thank you,<br />\r\n<br />\r\n{$site_name}</p>'),
 ('en',  'mail.contact', '<p>You have been sent a message from your website {$l_site_name}.</p>\r\n<hr />\r\n<p>Name: {$name}<br />\r\nEmail: {$email}</p>\r\n\r\n<p>The message:</p>\r\n{$body}'),
@@ -467,10 +469,10 @@ CREATE TABLE `__PREFIX__menu_set` (
   KEY `ref_idx` (`ref_idx`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `__PREFIX__menu_set` (`idx`, `menu_id`, `menu_title`, `menu_preset`, `menu_class`, `menu_notes`, `menu_cache`, `menu_locked`, `ref_idx`) VALUES
-(1, 'main_menu',  'Main Menu',  'bsnav',  '', 'Main menu, usually located at the top of the page.', '<ul id=\"qmenu_main_menu\" class=\"nav navbar-nav\">\n <li><a href=\"__SITE__/index.php\">Home</a></li>\n <li><a href=\"__SITE__/page.php?pid=4\">About Us</a></li>\n  <li><a href=\"__SITE__/contact.php\">Contact Us</a></li>\n</ul>\n', '0',  0),
-(2, 'footer_menu',  'Footer Menu',  'list_1', '', 'Footer menu, usually located at the end of the page.', '<ul id=\"qmenu_footer_menu\" class=\"list_1\">\n <li><a href=\"__SITE__/contact.php\">Contact Us</a></li>\n  <li><a href=\"__SITE__/sitemap.php\">Site Map</a></li>\n  <li><a href=\"__SITE__/tell.php\">Tell a Friend</a></li>\n</ul>\n', '0',  0),
-(3, 'page_menu',  'Page Menu',  'list_1', '', 'Menu linking to some important, but not that important pages.',  '<ul id=\"qmenu_page_menu\" class=\"list_1\">\n <li><a href=\"__SITE__/page.php?pid=2\">Privacy Policy</a></li>\n <li><a href=\"__SITE__/page.php?pid=7\">Terms & Conditions</a></li>\n <li><a href=\"__SITE__/page.php?pid=3\">FAQ</a></li>\n  <li><a href=\"__SITE__/page.php?pid=8\">Powered by qEngine</a></li>\n</ul>\n',  '0',  0);
+INSERT INTO `__PREFIX__menu_set` (`idx`, `menu_id`, `menu_title`, `menu_preset`, `menu_class`, `menu_notes`, `menu_cache`, `menu_locked`, `max_depth`, `ref_idx`) VALUES
+(1,	'main_menu',	'Main Menu',	'bsnav',	'',	'Main menu, usually located at the top of the page.',	'<ul id=\"qmenu_main_menu\" class=\"navbar-nav mr-auto\">\n	<li class=\"nav-item\"><a href=\"__SITE__/index.php\" class=\"nav-link\">Home</a></li>\n	<li class=\"nav-item\"><a href=\"__SITE__/page.php?pid=4\" class=\"nav-link\">About Us</a></li>\n	<li class=\"nav-item\"><a href=\"__SITE__/contact.php\" class=\"nav-link\">Contact Us</a></li>\n</ul>\n',	'0',	1,	0),
+(2,	'footer_menu',	'Footer Menu',	'list_1',	'',	'Footer menu, usually located at the end of the page.',	'<ul id=\"qmenu_footer_menu\" class=\"list_1\">\n	<li><a href=\"__SITE__/contact.php\">Contact Us</a></li>\n	<li><a href=\"__SITE__/sitemap.php\">Site Map</a></li>\n	<li><a href=\"__SITE__/tell.php\">Tell a Friend</a></li>\n</ul>\n',	'0',	1,	0),
+(3,	'page_menu',	'Page Menu',	'list_1',	'',	'Menu linking to some important, but not that important pages.',	'<ul id=\"qmenu_page_menu\" class=\"list_1\">\n	<li><a href=\"__SITE__/page.php?pid=2\">Privacy Policy</a></li>\n	<li><a href=\"__SITE__/page.php?pid=7\">Terms & Conditions</a></li>\n	<li><a href=\"__SITE__/page.php?pid=3\">FAQ</a></li>\n	<li><a href=\"__SITE__/page.php?pid=8\">Powered by qEngine</a></li>\n</ul>\n',	'0',	1,	0);
 
 DROP TABLE IF EXISTS `__PREFIX__module`;
 CREATE TABLE `__PREFIX__module` (
@@ -662,8 +664,8 @@ INSERT INTO `__PREFIX__permalink` (`idx`, `url`, `target_script`, `target_idx`, 
 (9, 'general-pages.php',  'page.php', '1',  'list'),
 (10,  'news.php', 'page.php', '2',  'list');
 
-DROP TABLE IF EXISTS `__PREFIX__qadmin_log`;
-CREATE TABLE `__PREFIX__qadmin_log` (
+DROP TABLE IF EXISTS `__PREFIX__qform_log`;
+CREATE TABLE `__PREFIX__qform_log` (
   `log_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `log_date` int(10) unsigned NOT NULL,
   `log_file` varchar(255) NOT NULL,

@@ -1,5 +1,13 @@
-Version 16.3.1 / 20190628:
-[QE] Reformat the code according to PSR-2 guide
+Version 17.0.0 / 20190726
+[QE] As always, bug fixes
+[QE] Updated to Bootstrap 4.3.1
+[QE] Replace Glyphicons to Open Iconic due to licensing with Bootstrap 3.x (https://useiconic.com/open)
+[QE] Dropped functions: xss_clean, display_smilies
+[QE] Uses PHPFixer to tidy up PHP files
+[QE] Replace qadmin with qform, a more general purpose form builder
+[QE] Replace menu designer with drap & drop
+[QE] Update File Manager UI
+[QE] Other minor enhancement
 
 Version 16.3.0 / 20180402:
 [QE] As always, bug fixes

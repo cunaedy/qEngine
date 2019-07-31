@@ -56,6 +56,7 @@ if (empty($warn)) {
 <head>
 <meta http-equiv="Content-Language" content="en-us" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../skins/_common/bootstrap.css"/>
 <link rel="stylesheet" type="text/css" href="../skins/_common/default.css"/>
 <title>qEngine: Installation</title>
 </head>
@@ -66,57 +67,57 @@ if (empty($warn)) {
 		<h1>Installation</h1>
 		<p class="lead">Step 2: In order to complete this installation please fill out the details
 		requested below. Please note that the database you install into should already exist.</p>
-		<div class="panel panel-default">
-			<div class="panel-heading"><h3 class="panel-title">Server Configuration</h3></div>
+		<div class="card">
+			<div class="card-header"><h3 class="panel-title">Server Configuration</h3></div>
 			<form method="post" action="install_process.php">
 				<input type="hidden" name="gd_ver" value="<?php echo $gd_ver; ?>" />
 				<table class="table">
 					<tr><td width="100%" colspan="2"><h4>Database Configuration</h4></td></tr>
 					<tr>
-						<td width="37%">Database Server Hostname<br /><font size="1"><i>Default: &#39;localhost&#39;</i></font></td>
-						<td width="63%"><input type="text" name="db_hostname" size="60" value="localhost" /></td>
+						<td width="37%">Database Server Hostname<br /><small><i>Default: &#39;localhost&#39;</i></small></td>
+						<td width="63%"><input type="text" class="form-control" name="db_hostname" size="60" value="localhost" /></td>
 					</tr>
 					<tr>
 						<td width="37%">Database Name</td>
-						<td width="63%"><input type="text" name="db_name" size="60" /></td>
+						<td width="63%"><input type="text" class="form-control" name="db_name" size="60" /></td>
 					</tr>
 					<tr>
 						<td width="37%">Database Username</td>
-						<td width="63%"><input type="text" name="db_username" size="27" /></td>
+						<td width="63%"><input type="text" class="form-control" name="db_username" size="27" /></td>
 					</tr>
 					<tr>
 						<td width="37%">Database Password</td>
-						<td width="63%"><input type="text" name="db_passwd" size="17" /></td>
+						<td width="63%"><input type="text" class="form-control" name="db_passwd" size="17" /></td>
 					</tr>
 					<tr>
 						<td width="37%">Table Prefix</td>
-						<td width="63%"><input type="text" name="db_prefix" size="17" value="qe_" /></td>
+						<td width="63%"><input type="text" class="form-control" name="db_prefix" size="17" value="qe_" /></td>
 					</tr>
 					<tr><td width="100%" colspan="2"><h4>Site Configuration</h4></td></tr>
 					<tr>
 						<td width="37%">Absolute URL (e.g http://www.yourdomain/site)</td>
-						<td width="63%"><input type="text" name="abs_url" size="60" value="<?php echo $abs_url; ?>" /></td>
+						<td width="63%"><input type="text" class="form-control" name="abs_url" size="60" value="<?php echo $abs_url; ?>" /></td>
 					</tr>
 					<tr>
 						<td width="37%">Absolute Path (e.g /home/www/mysite/site)</td>
-						<td width="63%"><input type="text" name="abs_path" size="60" value="<?php echo $abs_path; ?>" /></td>
+						<td width="63%"><input type="text" class="form-control" name="abs_path" size="60" value="<?php echo $abs_path; ?>" /></td>
 					</tr>
 					<tr><td width="100%" colspan="2"><h4>Admin Configuration</h4></td></tr>
 					<tr>
 						<td width="37%">Site/Administrator&#39;s Email</td>
-						<td width="63%"><input type="text" name="admin_email" size="60" /></td>
+						<td width="63%"><input type="text" class="form-control" name="admin_email" size="60" /></td>
 					</tr>
 					<tr>
 						<td width="37%">Administrator Username</td>
-						<td width="63%"><input type="text" name="admin_username" size="60" /></td>
+						<td width="63%"><input type="text" class="form-control" name="admin_username" size="60" /></td>
 					</tr>
 					<tr>
 						<td width="37%">Administrator Password</td>
-						<td width="63%"><input type="password" name="admin_passwd" size="17" /></td>
+						<td width="63%"><input type="password" class="form-control" name="admin_passwd" size="17" /></td>
 					</tr>
 					<tr>
 						<td width="37%">Administrator Password Confirm</td>
-						<td width="63%"><input type="password" name="admin_passwd_confirm" size="17" /></td>
+						<td width="63%"><input type="password" class="form-control" name="admin_passwd_confirm" size="17" /></td>
 					</tr>
 					<tr><td width="100%" colspan="2"><h4>Miscellaneous Configuration</h4></td></tr>
 					<tr>

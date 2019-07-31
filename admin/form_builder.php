@@ -12,7 +12,7 @@ echo "Copy & paste the source to create form<hr />\n";
 
 switch ($mode) {
     case 'ver':
-        echo "  <table border=\"0\" width=\"100%\" class=\"admin_tbl\">\n";
+        echo "  <table border=\"0\" width=\"100%\">\n";
 
         for ($i = 0; $i < $fields; $i++) {
             $tbl = mysqli_fetch_field_direct($res, $i);
@@ -46,14 +46,14 @@ switch ($mode) {
 
 
     case 'hor':
-        echo "  <table border=\"0\" width=\"100%\" class=\"admin_tbl\">\n";
+        echo "  <table border=\"0\" width=\"100%\" >\n";
         echo "      <tr>\n";
 
         // create titles
         for ($i = 0; $i < $fields; $i++) {
             $tbl = mysqli_fetch_field_direct($res, $i);
             $name  = $tbl->name;
-            echo "        <td class=\"adminbg_c\">".ucwords(strtolower(str_replace('_', ' ', $name)))."</td>\n";
+            echo "        <td>".ucwords(strtolower(str_replace('_', ' ', $name)))."</td>\n";
         }
 
         echo "      </tr>\n";
@@ -118,7 +118,7 @@ switch ($mode) {
         while ($row = sql_fetch_array($res)) {
             $a .= "\$$row[config_id] = get_param ('$row[config_id]');<br />";
             $b .= "sql_query (\"UPDATE \".\$db_prefix.\"module_config SET config_value='\$$row[config_id]' WHERE mod_id='\$mod_id' AND config_id='$row[config_id]' LIMIT 1\");<br />";
-            $c .= "&lt;tr&gt;&lt;td class=\"adminbg_c\"&gt;Sometxt&lt;/th&gt;&lt;td&gt;'.create_varchar_form ('$row[config_id]', \$module_config[\$mod_id]['$row[config_id]']).'&lt;/td&gt;&lt;/tr&gt;<br />";
+            $c .= "&lt;tr&gt;&lt;td &gt;Sometxt&lt;/th&gt;&lt;td&gt;'.create_varchar_form ('$row[config_id]', \$module_config[\$mod_id]['$row[config_id]']).'&lt;/td&gt;&lt;/tr&gt;<br />";
         }
         echo "<pre>$a$b$c</pre>";
     break;

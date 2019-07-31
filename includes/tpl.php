@@ -16,7 +16,7 @@ function compile_tpl($args)
     switch ($args[1]) {
         case 'section':
          $tpl_section[$args[2]] = $args[3];
-         //return TRUE;
+         //return true;
         break;
 
         case 'subblock':
@@ -48,7 +48,7 @@ function compile_tpl($args)
          if (empty(${$vars[0]})) {
              $cmd = 0;
          } else {
-             $cmd = eval("if ($args[2]) return TRUE; else return FALSE;");
+             $cmd = eval("if ($args[2]) return true; else return false;");
          }
 
          if ($cmd) {

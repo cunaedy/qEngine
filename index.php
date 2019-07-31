@@ -1,12 +1,12 @@
 <?php
 /************************************************
- * Powered with qEngine v16.3 (c) C97.net
+ * Powered with qEngine v17 (c) C97.net
  * All rights reserved
  ************************************************/
 
 // check install/
 if (file_exists('./install/')) {
-    die('If you have just installed qEngine, please delete the <b>"install/"</b> directory on your server before using qEngine v16.3.0 (build 2018.04.02).<br />Or <a href="install/index.php">'
+    die('If you have just installed qEngine, please delete the <b>"install/"</b> directory on your server before using qEngine v17 (build 2019.07.26).<br />Or <a href="install/index.php">'
         .'click here</a> to install qEngine for the first time.');
 }
 

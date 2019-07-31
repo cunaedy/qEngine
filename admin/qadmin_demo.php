@@ -193,15 +193,15 @@ $foo[] = 'Name,uname,varchar,80';
 $foo[] = 'Company Name,cname,varchar,80';
 $foo[] = 'Address,address,varchar,255';
 $foo[] = 'Notes,notes,text,300*100';
-$qadmin_def = qadmin_qbuild ($foo, TRUE);
+$qadmin_def = qadmin_qbuild ($foo, true);
 */
 
 // general configuration ( * = optional )
 $qadmin_cfg['table'] = 'tmp_news';					// table name
 $qadmin_cfg['primary_key'] = 'news_id';						// table's primary key
 $qadmin_cfg['primary_val'] = 'dummy';						// primary key value
-$qadmin_cfg['ezf_mode'] = false;							// TRUE to use EZF mode (see ./_qadmin_ez_mode.txt for more info), FALSE to use QADMIN *
-$qadmin_cfg['ezd_mode'] = false;							// TRUE to use ezDesign mode (see ./qadmin_ez_mode.txt for more info), FALSE to use QADMIN *
+$qadmin_cfg['ezf_mode'] = false;							// true to use EZF mode (see ./_qadmin_ez_mode.txt for more info), false to use QADMIN *
+$qadmin_cfg['ezd_mode'] = false;							// true to use ezDesign mode (see ./qadmin_ez_mode.txt for more info), false to use QADMIN *
 $qadmin_cfg['template'] = 'default';						// template to use
 # $qadmin_cfg['back'] = 'url.php';					// back button link, if omitted will use $qadmin_cfg['action'] value *
 # $qadmin_cfg['header'] = 'Additional Header';				// additional header *

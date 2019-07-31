@@ -8,6 +8,7 @@
 	<meta name="author" content="{$site_email}" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title>{$head_title}</title>
+	<link rel="stylesheet" type="text/css" href="{$site_url}/skins/_common/bootstrap.css"/>
 	<link rel="stylesheet" type="text/css" href="{$site_url}/skins/_common/default.css"/>
 	<link rel="stylesheet" type="text/css" href="{$site_url}/skins/_common/jscripts.css"/>
 	<link rel="stylesheet" type="text/css" href="{$site_url}/skins/default/layout.css" />
@@ -18,7 +19,7 @@
 	<script type="text/javascript" src="{$site_url}/misc/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="{$site_url}/misc/js/jscripts.js"></script>
 	{$module_js_list}
-	
+
 	<style type="text/css">
 		@media print{
 			.print {display:none !important;}
@@ -38,4 +39,4 @@
 </p>
 </body>
 
-</html>	
+</html>
