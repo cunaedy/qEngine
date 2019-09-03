@@ -677,6 +677,7 @@ CREATE TABLE `__PREFIX__qform_log` (
   `log_action` int(10) unsigned NOT NULL,
   `log_previous` text NOT NULL,
   `log_now` text NOT NULL,
+  `log_parent` int unsigned NOT NULL,
   PRIMARY KEY (`log_id`),
   KEY `log_ip` (`log_ip`),
   KEY `log_user` (`log_user`)
